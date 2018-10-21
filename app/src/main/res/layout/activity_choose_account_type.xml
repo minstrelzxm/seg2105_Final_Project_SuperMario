@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/createAdminTypeBtn"
+        android:id="@+id/chooseTypeAdminBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/createProviderTypeBtn"
+        android:id="@+id/chooseTypeProviderBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -46,10 +46,10 @@
         android:text="Service Provider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createAdminTypeBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeAdminBtn" />
 
     <Button
-        android:id="@+id/createOwnerTypeBtn"
+        android:id="@+id/chooseTypeOwnerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -60,6 +60,6 @@
         android:text="Home Owner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createProviderTypeBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseTypeProviderBtn" />
 
 </android.support.constraint.ConstraintLayout>
