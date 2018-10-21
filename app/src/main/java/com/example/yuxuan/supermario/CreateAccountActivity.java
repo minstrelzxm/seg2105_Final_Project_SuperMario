@@ -20,10 +20,12 @@ public class CreateAccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 OnBackMainActivity();
+
             }
         });
     }
     public void OnBackMainActivity(){
+        Toast.makeText(this,"Successfully created an Account",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),MainActivity.class);
         startActivityForResult(intent,0);
     }
