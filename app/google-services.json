@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "361969841457",
+    "firebase_url": "https://seg2105finalprojectsupermario.firebaseio.com",
+    "project_id": "seg2105finalprojectsupermario",
+    "storage_bucket": "seg2105finalprojectsupermario.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361969841457:android:3614f17d290290cc",
+        "android_client_info": {
+          "package_name": "com.example.yuxuan.supermario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361969841457-2ttjkuktjffibb4kg17dqol87v1msed2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yuxuan.supermario",
+            "certificate_hash": "559ea4388862773df88f87d2a85d36654655b27c"
+          }
+        },
+        {
+          "client_id": "361969841457-pcaecggnk11kd02gjane466i0p5tjk8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4IKqllj3j0Bv1gjDjIrlQBIS8AYSuasE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361969841457-pcaecggnk11kd02gjane466i0p5tjk8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
