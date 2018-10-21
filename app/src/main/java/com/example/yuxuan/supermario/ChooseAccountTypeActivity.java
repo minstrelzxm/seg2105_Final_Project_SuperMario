@@ -15,21 +15,21 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account_type);
 
-        button1=findViewById(R.id.createAdminTypeBtn);
+        button1=findViewById(R.id.chooseTypeAdminBtn);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateAccountButton();
             }
         });
-        button2=findViewById(R.id.createProviderTypeBtn);
+        button2=findViewById(R.id.chooseTypeProviderBtn);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateAccountButton();
             }
         });
-        button3=findViewById(R.id.createOwnerTypeBtn);
+        button3=findViewById(R.id.chooseTypeOwnerBtn);
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
