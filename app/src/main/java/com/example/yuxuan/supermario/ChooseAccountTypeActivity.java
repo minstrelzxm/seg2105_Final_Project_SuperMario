@@ -7,30 +7,30 @@ import android.view.View;
 import android.widget.Button;
 
 public class ChooseAccountTypeActivity extends AppCompatActivity {
-    private Button button1;
-    private Button button2;
-    private Button button3;
+    private Button Adminbutton;
+    private Button Providerbutton;
+    private Button Ownerbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_account_type);
 
-        button1=findViewById(R.id.chooseTypeAdminBtn);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Adminbutton=findViewById(R.id.chooseTypeAdminBtn);
+        Adminbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateAccountButton();
             }
         });
-        button2=findViewById(R.id.chooseTypeProviderBtn);
-        button2.setOnClickListener(new View.OnClickListener() {
+        Providerbutton=findViewById(R.id.chooseTypeProviderBtn);
+        Providerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateAccountButton();
             }
         });
-        button3=findViewById(R.id.chooseTypeOwnerBtn);
-        button3.setOnClickListener(new View.OnClickListener() {
+        Ownerbutton=findViewById(R.id.chooseTypeOwnerBtn);
+        Ownerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 CreateAccountButton();

@@ -1,13 +1,31 @@
 package com.example.yuxuan.supermario;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class CreateAccountActivity extends AppCompatActivity {
-
+    private Button BackMainButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
+
+        BackMainButton=findViewById(R.id.createAccCreateBtn);
+        BackMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnBackMainActivity();
+            }
+        });
     }
+    public void OnBackMainActivity(){
+        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+        startActivityForResult(intent,0);
+    }
+
 }

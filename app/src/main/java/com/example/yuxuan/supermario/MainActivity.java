@@ -7,23 +7,35 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button button;
+    private Button CreateAccountButton;
+    private Button MainLoginButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button=findViewById(R.id.mainCreateAccBtn);
-        button.setOnClickListener(new View.OnClickListener() {
+        CreateAccountButton=findViewById(R.id.mainCreateAccBtn);
+        CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OnAccountTypeButton();
+            }
+        });
+        MainLoginButton=findViewById(R.id.mainLoginBtn);
+        MainLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnAccountLoginButton();
             }
         });
 
     }
     public void OnAccountTypeButton(){
         Intent intent=new Intent(getApplicationContext(),ChooseAccountTypeActivity.class);
+        startActivityForResult(intent,0);
+    }
+    public void OnAccountLoginButton(){
+        Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
         startActivityForResult(intent,0);
     }
 }
