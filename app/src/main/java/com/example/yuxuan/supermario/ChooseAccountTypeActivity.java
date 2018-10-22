@@ -10,6 +10,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     private Button Adminbutton;
     private Button Providerbutton;
     private Button Ownerbutton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
