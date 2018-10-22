@@ -10,12 +10,14 @@ import android.widget.Toast;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.gms.common.internal.AccountType;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,7 +106,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         //double price = Double.parseDouble(String.valueOf(editTextPrice.getText().toString()));
         if(!TextUtils.isEmpty(username)){
             String id = databaseAccounts.push().getKey();
-            Account account = new Account(username,password,types);
+            Account account = new Account(username,password,MyAccountType.);
 
             databaseAccounts.child(id).setValue(account);
             createAccAccName.setText("");
