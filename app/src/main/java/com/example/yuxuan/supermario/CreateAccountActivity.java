@@ -52,6 +52,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     EditText createAccAccName;
     EditText createAccAccPassword;
     EditText createAccReAccPassword;
+    Account.AccountType types;
     Button buttonAddAccount;
     ListView listViewAccounts;
 
