@@ -6,17 +6,21 @@ public class Account {
     //AccountType types;
     //int type;
 
-    public Account(){}
 
     public enum AccountType{
         administrator,serviceProviders,homeOwners
     }
+    private AccountType AccountTypes;
 
     public Account(String username, String password, AccountType types){
         this.username=username;
         this.password=password;
-        AccountType AccountTypes = types;
+        AccountTypes = types;
         //this.type=type;
+    }
+
+    public AccountType gettypes(){
+        return AccountTypes;
     }
 
     public String getUsername() {
