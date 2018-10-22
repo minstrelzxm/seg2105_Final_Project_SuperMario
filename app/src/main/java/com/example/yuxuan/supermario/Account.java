@@ -19,6 +19,10 @@ public class Account {
         //this.type=type;
     }
 
+    public AccountType gettypes(){
+        return AccountTypes;
+    }
+
     public String getUsername() {
         return username;
     }
