@@ -35,5 +35,5 @@ public class CreateAccountActivity extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(),MainActivity.class);
         startActivityForResult(intent,0);
     }
-
+    
 }
