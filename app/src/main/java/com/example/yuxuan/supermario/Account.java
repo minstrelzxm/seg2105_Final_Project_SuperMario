@@ -3,14 +3,20 @@ package com.example.yuxuan.supermario;
 public class Account {
     String username;
     String password;
-    int type;
+    //AccountType types;
+    //int type;
 
     public Account(){}
 
-    public Account(String username, String password, int type){
+    public enum AccountType{
+        administrator,service_providers,homeowners
+    }
+
+    public Account(String username, String password, AccountType types){
         this.username=username;
         this.password=password;
-        this.type=type;
+        AccountType AccountTypes = types;
+        //this.type=type;
     }
 
     public String getUsername() {
