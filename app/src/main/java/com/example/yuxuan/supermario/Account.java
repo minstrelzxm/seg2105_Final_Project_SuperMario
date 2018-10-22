@@ -6,7 +6,6 @@ public class Account {
     //AccountType types;
     //int type;
 
-    public Account(){}
 
     public enum AccountType{
         administrator,service_providers,homeowners
