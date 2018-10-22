@@ -29,6 +29,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
 
+
+
         BackMainButton=findViewById(R.id.createAccCreateBtn);
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +44,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         });
     }
+    
     public void OnBackMainActivity(){
         Toast.makeText(this,"Successfully created an Account",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),MainActivity.class);
