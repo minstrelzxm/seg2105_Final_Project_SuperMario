@@ -24,7 +24,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     DatabaseReference databaseProducts;
 
     protected void onCreate(Bundle savedInstanceState) {
-        databaseProducts = FirebaseDatabase.getInstance().getReference("products");
+        databaseProducts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 

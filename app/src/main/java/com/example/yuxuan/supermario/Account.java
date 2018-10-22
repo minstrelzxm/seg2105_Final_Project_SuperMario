@@ -3,6 +3,9 @@ package com.example.yuxuan.supermario;
 public class Account {
     String username;
     String password;
+
+    public Account(){}
+    
     public Account(String username, String password){
         this.username=username;
         this.password=password;
