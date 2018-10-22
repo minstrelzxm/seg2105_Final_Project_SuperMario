@@ -8,7 +8,7 @@ public class Account {
 
 
     public enum AccountType{
-        administrator,service_providers,homeowners
+        administrator,serviceProviders,homeOwners
     }
 
     public Account(String username, String password, AccountType types){
@@ -25,11 +25,11 @@ public class Account {
     public String getPassword() {
         return password;
     }
-    public void setUsername(String newname){
-        this.username=newname;
+    public void setUsername(String newName){
+        this.username=newName;
     }
-    public void setPassword(String newpass){
-        this.password=newpass;
+    public void setPassword(String newPass){
+        this.password=newPass;
     }
 }
 
