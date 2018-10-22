@@ -19,9 +19,12 @@ public class CreateAccountActivity extends AppCompatActivity {
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                OnBackMainActivity();
-
+                if(R.id.createAccAccPassword!=R.id.createAccReAccPassword){//need add checking email in firebase.
+                    OnBackMainActivityFail();
+                }
+                else{
+                    OnBackMainActivity();
+                }
             }
         });
     }
