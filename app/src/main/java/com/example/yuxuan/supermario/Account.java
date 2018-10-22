@@ -3,12 +3,14 @@ package com.example.yuxuan.supermario;
 public class Account {
     String username;
     String password;
+    int type;
 
     public Account(){}
-    
-    public Account(String username, String password){
+
+    public Account(String username, String password, int type){
         this.username=username;
         this.password=password;
+        this.type=type;
     }
 
     public String getUsername() {
