@@ -5,7 +5,7 @@ import com.google.android.gms.common.internal.AccountType;
 public class Account {
     String username;
     String password;
-    //AccountType types;
+    AccountType types;
     //int type;
 
     private MyAccountType AccountTypes;

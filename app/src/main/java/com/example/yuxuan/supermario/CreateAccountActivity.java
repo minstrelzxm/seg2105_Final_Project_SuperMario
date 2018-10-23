@@ -54,7 +54,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     EditText createAccAccName;
     EditText createAccAccPassword;
     EditText createAccReAccPassword;
-    Account.AccountType types;
+    MyAccountType types;
     Button buttonAddAccount;
     ListView listViewAccounts;
 
@@ -68,6 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         createAccAccName = (EditText) findViewById(R.id.createAccAccName);
         createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
         createAccReAccPassword = (EditText) findViewById(R.id.createAccReAccPassword);
+        //types = (MyAccountType) findViewById(R.id.)
         //buttonAddAccount = (Button) findViewById(R.id.createAccCreateBtn);
 
         accounts = new ArrayList<>();
@@ -104,7 +105,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         //Toast.makeText(this, "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
         String username = createAccAccName.getText().toString().trim();
         String password = createAccAccPassword.getText().toString().trim();
-        //double price = Double.parseDouble(String.valueOf(editTextPrice.getText().toString()));
+
         if(!TextUtils.isEmpty(username)){
             String id = databaseAccounts.push().getKey();
             Account account = new Account(username,password,MyAccountType);
