@@ -13,7 +13,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     private Button Adminbutton;
     private Button Providerbutton;
     private Button Ownerbutton;
-    MyAccountType currentType;
+    public MyAccountType currentType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +51,9 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     public void CreateAccountButton(){
         Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
         startActivityForResult(intent,0);
+    }
+    public MyAccountType getCurrentType() {
+        return currentType;
     }
 
 

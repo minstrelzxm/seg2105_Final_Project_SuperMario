@@ -108,7 +108,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(username)){
             String id = databaseAccounts.push().getKey();
-            Account account = new Account(username,password,MyAccountType);
+            Account account = new Account(username,password,);
 
             databaseAccounts.child(id).setValue(account);
             createAccAccName.setText("");
