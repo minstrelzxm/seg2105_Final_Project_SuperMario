@@ -1,5 +1,8 @@
 package com.example.yuxuan.supermario;
-
+/*
+We use setter to set the username(Email) and password
+from the UI(xml) and create account.
+ */
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

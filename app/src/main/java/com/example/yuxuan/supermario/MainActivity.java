@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    //public Account[] adminAcc = new Account[1];
     private Button CreateAccountButton;
     private Button MainLoginButton;
     @Override
