@@ -63,6 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
+        types = ChooseAccountTypeActivity.currentType
         setContentView(R.layout.activity_create_account);
 
         createAccAccName = (EditText) findViewById(R.id.createAccAccName);
