@@ -30,6 +30,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     /*
     I try to use array to specify the number of accounts for each type of account
      */
+    // do we need a counter for the provider account array and owner account array
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
