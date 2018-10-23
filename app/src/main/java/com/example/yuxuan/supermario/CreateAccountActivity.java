@@ -86,7 +86,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     OnBackMainActivityFail();
                 }
                 else{
-
+                //TODO: set account's (the empty one we already created) username and password.
                     OnBackMainActivity();
                 }
             }
