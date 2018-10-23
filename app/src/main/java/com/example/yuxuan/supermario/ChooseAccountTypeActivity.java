@@ -50,11 +50,12 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     }
     public void CreateAccountButton(){
         Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
+        intent.putExtra("selectedType", currentType);
         startActivityForResult(intent,0);
     }
-    public MyAccountType getCurrentType() {
-        return currentType;
-    }
+//    public MyAccountType getCurrentType() {
+//        return currentType;
+//    }
 
 
 

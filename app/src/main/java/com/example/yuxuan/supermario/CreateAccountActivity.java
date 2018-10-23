@@ -54,7 +54,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     EditText createAccAccName;
     EditText createAccAccPassword;
     EditText createAccReAccPassword;
-    MyAccountType types;
+    MyAccountType selectedType;
     Button buttonAddAccount;
     ListView listViewAccounts;
 
@@ -64,6 +64,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+        selectedType = (MyAccountType) getIntent().getSerializableExtra("selectedType");
 
         createAccAccName = (EditText) findViewById(R.id.createAccAccName);
         createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
@@ -108,9 +109,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(username)){
             String id = databaseAccounts.push().getKey();
-            Account account = new Account(username,password,);
+            Account myAccount = new Account(username,password,selectedType);
 
-            databaseAccounts.child(id).setValue(account);
+            databaseAccounts.child(id).setValue(myAccount);
             createAccAccName.setText("");
             createAccAccPassword.setText("");
             Toast.makeText(this, "Account added", Toast.LENGTH_LONG).show();

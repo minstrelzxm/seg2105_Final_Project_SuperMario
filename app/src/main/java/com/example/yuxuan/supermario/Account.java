@@ -2,7 +2,9 @@ package com.example.yuxuan.supermario;
 
 import com.google.android.gms.common.internal.AccountType;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     String username;
     String password;
     AccountType types;
