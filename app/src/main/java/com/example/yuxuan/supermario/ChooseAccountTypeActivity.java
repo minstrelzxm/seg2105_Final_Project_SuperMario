@@ -19,7 +19,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         Adminbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Account adminAccount = new Account(" "," ",Account.AccountType.administrator);
+                Account adminAccount = new Account(" "," ",MyAccountType.administrator);
                 CreateAccountButton();
 
             }

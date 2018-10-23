@@ -107,7 +107,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         //double price = Double.parseDouble(String.valueOf(editTextPrice.getText().toString()));
         if(!TextUtils.isEmpty(username)){
             String id = databaseAccounts.push().getKey();
-            Account account = new Account(username,password,MyAccountType.);
+            Account account = new Account(username,password,MyAccountType);
 
             databaseAccounts.child(id).setValue(account);
             createAccAccName.setText("");

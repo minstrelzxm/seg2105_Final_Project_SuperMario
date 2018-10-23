@@ -10,9 +10,7 @@ public class Account {
 
     private MyAccountType AccountTypes;
 
-
-
-
+    
     public Account(String username, String password, MyAccountType types){
         this.username=username;
         this.password=password;
