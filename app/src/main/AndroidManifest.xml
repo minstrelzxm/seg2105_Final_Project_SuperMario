@@ -19,9 +19,7 @@
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".ChooseAccountTypeActivity" />
         <activity android:name=".WelcomeScreenActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".create_provider_account" />
-        <activity android:name=".create_owner_account"></activity>
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

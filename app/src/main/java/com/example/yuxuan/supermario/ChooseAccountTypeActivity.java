@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.Toast;
 
 public class ChooseAccountTypeActivity extends AppCompatActivity {
     private Button Adminbutton;
@@ -21,7 +21,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Account adminAccount = new Account(" "," ",MyAccountType.administrator);
-                CreateAccountButton(MyAccountType.administrator);
+                CreateAccountButton();
 
             }
         });
@@ -29,33 +29,21 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         Providerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Account serviceAccount = new Account(" "," ",MyAccountType.serviceProviders);
-                CreateAccountButton(MyAccountType.serviceProviders);
+                CreateAccountButton();
             }
         });
         Ownerbutton=findViewById(R.id.chooseTypeOwnerBtn);
         Ownerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Account ownerAccount = new Account(" "," ",MyAccountType.homeOwners);
-                CreateAccountButton(MyAccountType.homeOwners);
+                CreateAccountButton();
             }
         });
     }
-    public void CreateAccountButton(MyAccountType currentType){
-        if (currentType == MyAccountType.administrator){
-            Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
-            startActivityForResult(intent,0);
-        }
-        else if(currentType == MyAccountType.serviceProviders){
-            Intent intent=new Intent(getApplicationContext(),create_provider_account.class);
-            startActivityForResult(intent,0);
-        }
-        else{
-            Intent intent=new Intent(getApplicationContext(),create_owner_account.class);
-            startActivityForResult(intent,0);
-        }
->>>>>>> 305a6e0ed374aea3aff21f79c59c8ec1a8dc2b92
+    public void CreateAccountButton(){
+        Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
+        Toast.makeText(this,intent.toString(),Toast.LENGTH_LONG).show();
+        startActivityForResult(intent,0);
     }
 
 
