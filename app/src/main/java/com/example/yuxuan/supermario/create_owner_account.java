@@ -58,7 +58,7 @@ public class create_owner_account extends AppCompatActivity {
                     OnBackMainActivityFail();
                 }
                 else{
-
+                    addAccount();
                     OnBackMainActivity();
                 }
             }

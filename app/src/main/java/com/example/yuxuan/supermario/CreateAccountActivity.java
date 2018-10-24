@@ -57,7 +57,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     OnBackMainActivityFail();
                 }
                 else{
-
+                    addAccount();
                     OnBackMainActivity();
                 }
             }

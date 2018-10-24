@@ -60,7 +60,7 @@ public class create_provider_account extends AppCompatActivity {
                     OnBackMainActivityFail();
                 }
                 else{
-
+                    addAccount();
                     OnBackMainActivity();
                 }
             }
