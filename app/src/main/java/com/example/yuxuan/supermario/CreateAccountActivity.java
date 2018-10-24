@@ -5,6 +5,8 @@ Create an admin account and push it to Firebase.
  */
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.android.gms.common.internal.AccountType;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,7 @@ import java.util.regex.Pattern;
 
 public class CreateAccountActivity extends AppCompatActivity {
     private Button BackMainButton;
+    private FirebaseDatabase mRef;
 
     DatabaseReference databaseAccounts;
     EditText createAccAccName;
@@ -41,6 +45,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     ListView listViewAccounts;
 
     List<Account> accounts;
+    List<String> username;
 
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("Accounts");
@@ -54,6 +59,33 @@ public class CreateAccountActivity extends AppCompatActivity {
         //buttonAddAccount = (Button) findViewById(R.id.createAccCreateBtn);
 
         accounts = new ArrayList<>();
+        databaseAccounts.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                String value = dataSnapshot.getValue(String.class);
+                username.add(value);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         /*TODO: If we already has an admin account we need to tell user that
             TODO: he cannot create another admin account.
