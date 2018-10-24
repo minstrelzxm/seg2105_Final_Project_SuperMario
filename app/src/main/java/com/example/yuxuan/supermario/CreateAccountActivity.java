@@ -41,35 +41,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     List<Account> accounts;
 
-    /**protected void onCreate(Bundle savedInstanceState) {
-        databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_account);
-
-        createAccAccName = (EditText) findViewById(R.id.createAccAccName);
-        createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
-        createAccReAccPassword = (EditText) findViewById(R.id.createAccReAccPassword);
-        //types = (MyAccountType) findViewById(R.id.)
-        //buttonAddAccount = (Button) findViewById(R.id.createAccCreateBtn);
-
-        accounts = new ArrayList<>();
-
-        BackMainButton=(Button)findViewById(R.id.createAccCreateBtn);
-        BackMainButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(R.id.createAccAccPassword!=R.id.createAccReAccPassword){//need add checking email in firebase.
-                    OnBackMainActivityFail();
-                }
-                else{
-
-                    OnBackMainActivity();
-                }
-            }
-        });
-
-    }**/
-
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("Admin_Accounts");
         super.onCreate(savedInstanceState);
