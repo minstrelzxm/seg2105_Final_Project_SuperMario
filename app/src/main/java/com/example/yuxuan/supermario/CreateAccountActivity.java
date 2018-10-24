@@ -45,7 +45,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     ListView listViewAccounts;
 
     List<Account> accounts;
-    List<String> username;
 
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("Accounts");
@@ -59,33 +58,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         //buttonAddAccount = (Button) findViewById(R.id.createAccCreateBtn);
 
         accounts = new ArrayList<>();
-        databaseAccounts.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String value = dataSnapshot.getValue(String.class);
-                username.add(value);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         /*TODO: If we already has an admin account we need to tell user that
             TODO: he cannot create another admin account.
@@ -101,8 +73,13 @@ public class CreateAccountActivity extends AppCompatActivity {
                 //TODO: an correct email address.? also for provider and owner.
                 if(createAccAccPassword.getText().toString().equals(createAccReAccPassword.getText().toString())){
                     if(checkEmail()){
-                        addAccount();
-                        OnBackMainActivity();
+                        if(AccountCheck(createAccAccPassword.getText().toString(),createAccReAccPassword.getText().toString())){
+                            addAccount();
+                            OnBackMainActivity();
+                        }
+                        else{
+                            OnBackMainActivityFailEmail();
+                        }
                     }
                     else{
                         OnBackMainActivityFailEmail();
@@ -111,6 +88,35 @@ public class CreateAccountActivity extends AppCompatActivity {
                 else{
                     OnBackMainActivityFail();
                 }
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        accounts = new ArrayList<>();
+        databaseAccounts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                accounts.clear();
+                for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
+                    if (dataSnapshot.exists()) {
+                        MyAccountType eee =postSnapShot.child("accountTypes").getValue(MyAccountType.class);
+                        String user = postSnapShot.child("username").getValue(String.class);
+                        String pas= postSnapShot.child("password").getValue().toString();
+                        Account account = new Account(user,pas,eee);
+                        accounts.add(account);
+                    } else {
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -194,6 +200,24 @@ public class CreateAccountActivity extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+
+    public boolean AccountCheck(String username,String passwords,MyAccountType myAccountType){
+        Account account = new Account(username, passwords,myAccountType);
+        Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
+        for(int i=0;i<accounts.size();i++){
+            if(accounts.get(i).equals(account)){
+                Toast.makeText(getApplicationContext(),"Cannot use same email",Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean AccountCheck(String username,String passwords){
+        if(AccountCheck(username,passwords,MyAccountType.administrator)||AccountCheck(username,passwords,MyAccountType.serviceProviders)||AccountCheck(username,passwords,MyAccountType.homeOwners)){
+            return true;
+        }
+        return false;
     }
     
 }
