@@ -41,6 +41,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     }
     public void CreateAccountButton(){
         Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
+
         startActivityForResult(intent,0);
     }
 
