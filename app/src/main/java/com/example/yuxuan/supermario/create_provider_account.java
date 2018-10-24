@@ -42,7 +42,7 @@ public class create_provider_account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_provider_account);
+        setContentView(R.layout.activity_create_account);
 
         createAccAccName = (EditText) findViewById(R.id.createAccAccName);
         createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
@@ -53,19 +53,17 @@ public class create_provider_account extends AppCompatActivity {
         accounts = new ArrayList<>();
 
         BackMainButton=(Button)findViewById(R.id.createAccCreateBtn);
+
+
+
+        //adding an onclicklistener to button
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(R.id.createAccAccPassword!=R.id.createAccReAccPassword){//need add checking email in firebase.
-                    OnBackMainActivityFail();
-                }
-                else{
-                    addAccount();
-                    OnBackMainActivity();
-                }
+                addAccount();
+                OnBackMainActivity();
             }
         });
-
     }
 
     public void OnBackMainActivity(){

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     List<Account> accounts;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    /**protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
@@ -63,6 +64,32 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         });
 
+    }**/
+    protected void onCreate(Bundle savedInstanceState) {
+        databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create_account);
+
+        createAccAccName = (EditText) findViewById(R.id.createAccAccName);
+        createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
+        createAccReAccPassword = (EditText) findViewById(R.id.createAccReAccPassword);
+        //types = (MyAccountType) findViewById(R.id.)
+        //buttonAddAccount = (Button) findViewById(R.id.createAccCreateBtn);
+
+        accounts = new ArrayList<>();
+
+        BackMainButton=(Button)findViewById(R.id.createAccCreateBtn);
+
+
+
+        //adding an onclicklistener to button
+        BackMainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAccount();
+                OnBackMainActivity();
+            }
+        });
     }
     
     public void OnBackMainActivity(){
