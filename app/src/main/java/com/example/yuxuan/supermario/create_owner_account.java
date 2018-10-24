@@ -75,7 +75,7 @@ public class create_owner_account extends AppCompatActivity {
     }
     public void OnBackMainActivityFail(){
         Toast.makeText(this,"Fail to created an Account",Toast.LENGTH_LONG).show();
-        Intent intent=new Intent(getApplicationContext(),create_owner_account.class);
+        Intent intent=new Intent(getApplicationContext(),ChooseAccountTypeActivity.class);
         startActivityForResult(intent,0);
     }
 
@@ -114,4 +114,10 @@ public class create_owner_account extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Account Delected",Toast.LENGTH_LONG).show();
         return true;
     }
+
+    /**private boolean checkUsername(){
+        EditText checkname = createAccAccName;
+        return true;
+
+    }**/
 }
