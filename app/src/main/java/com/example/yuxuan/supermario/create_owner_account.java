@@ -23,9 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
-public class create_provider_account extends AppCompatActivity {
-
+public class create_owner_account extends AppCompatActivity {
 
     private Button BackMainButton;
 
@@ -33,7 +31,7 @@ public class create_provider_account extends AppCompatActivity {
     EditText createAccAccName;
     EditText createAccAccPassword;
     EditText createAccReAccPassword;
-    MyAccountType types = MyAccountType.serviceProviders;
+    MyAccountType types = MyAccountType.homeOwners;
     Button buttonAddAccount;
     ListView listViewAccounts;
 
@@ -42,7 +40,7 @@ public class create_provider_account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_provider_account);
+        setContentView(R.layout.activity_create_owner_account);
 
         createAccAccName = (EditText) findViewById(R.id.createAccAccName);
         createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
@@ -99,4 +97,3 @@ public class create_provider_account extends AppCompatActivity {
     }
 
 }
-

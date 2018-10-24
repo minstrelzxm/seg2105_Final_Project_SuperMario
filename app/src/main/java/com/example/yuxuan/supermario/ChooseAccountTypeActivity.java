@@ -28,6 +28,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         Providerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Account serviceAccount = new Account(" "," ",MyAccountType.serviceProviders);
                 CreateAccountButton();
             }
         });
@@ -35,6 +36,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         Ownerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Account ownerAccount = new Account(" "," ",MyAccountType.homeOwners);
                 CreateAccountButton();
             }
         });
