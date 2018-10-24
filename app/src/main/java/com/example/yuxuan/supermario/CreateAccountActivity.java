@@ -30,7 +30,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     EditText createAccAccName;
     EditText createAccAccPassword;
     EditText createAccReAccPassword;
-    MyAccountType types;
+    MyAccountType types = MyAccountType.administrator;
     Button buttonAddAccount;
     ListView listViewAccounts;
 
