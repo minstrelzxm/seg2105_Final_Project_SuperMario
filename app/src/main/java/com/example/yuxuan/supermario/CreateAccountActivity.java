@@ -25,7 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class CreateAccountActivity extends AppCompatActivity {
@@ -67,12 +68,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                 //TODO: might need a validation when creating account
                 //TODO: an correct email address.? also for provider and owner.
                 if(createAccAccPassword.getText().toString().equals(createAccReAccPassword.getText().toString())){
-                    //update the empty object we created before.
-                    addAccount();
-                    OnBackMainActivity();
+                    if(checkEmail()){
+                        addAccount();
+                        OnBackMainActivity();
+                    }
+                    else{
+                        OnBackMainActivityFailEmail();
+                    }
                 }
                 else{
-                    //failed to create an account due to unsame password input
                     OnBackMainActivityFail();
                 }
             }
@@ -89,6 +93,12 @@ public class CreateAccountActivity extends AppCompatActivity {
     // Failed to created an Account.
     public void OnBackMainActivityFail(){
         Toast.makeText(this,"Fail to created an Account",Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(getApplicationContext(),ChooseAccountTypeActivity.class);
+        startActivityForResult(intent,0);
+    }
+
+    public void OnBackMainActivityFailEmail(){
+        Toast.makeText(this,"Invaild Email",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),ChooseAccountTypeActivity.class);
         startActivityForResult(intent,0);
     }
@@ -132,6 +142,26 @@ public class CreateAccountActivity extends AppCompatActivity {
         dA.removeValue();
         Toast.makeText(getApplicationContext(),"Account Delected",Toast.LENGTH_LONG).show();
         return true;
+    }
+    private boolean checkEmail(){
+        String validate =
+
+                "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                        "\\@" +
+                        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                        "(" +
+                        "\\." +
+                        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                        ")+";
+
+        String email = createAccAccName.getText().toString();
+        Matcher matcher = Pattern.compile(validate).matcher(email);
+
+        if (matcher.matches()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 }
