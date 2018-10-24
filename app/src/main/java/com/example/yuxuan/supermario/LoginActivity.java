@@ -57,11 +57,11 @@ public class LoginActivity extends AppCompatActivity {
                     if(Accountlogin(mail.getText().toString().trim(),password.getText().toString().trim())){
                         OnLoginButton();
                     }else {
-                        //Toast.makeText(getApplicationContext(),"uncurrent password",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"uncurrent password",Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
-                    //Toast.makeText(getApplicationContext(),"Invaild Email",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Invaild Email",Toast.LENGTH_LONG).show();
 
                     /*
                     Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
