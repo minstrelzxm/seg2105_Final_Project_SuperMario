@@ -19,6 +19,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        mail=(EditText)findViewById(R.id.loginTextUsernameInput);
+        password=(EditText)findViewById(R.id.loginTextUserPasswordInput);
+
         LoginButton=findViewById(R.id.loginLoginBtn);
         LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +46,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Invaild Email",Toast.LENGTH_LONG).show();
+                    /*
+                    Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
+                    intent.putExtra("username",mail.getText().toString().trim());
+                    intent.putExtra("pasword",password.getText().toString().trim());
+                    startActivityForResult(intent,0);*/
                 }
                 if (password.getText().toString().equals("")){
                     password.setError("Enter correct password");
@@ -50,13 +59,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mail=(EditText)findViewById(R.id.loginTextUsernameInput);
-        password=(EditText)findViewById(R.id.loginTextUserPasswordInput);
 
     }
     public void OnLoginButton(){
         Toast.makeText(this,"Login Successfully",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
+        intent.putExtra("username",mail.getText().toString().trim());
+        intent.putExtra("pasword",password.getText().toString().trim());
         startActivityForResult(intent,0);
 
         /*TODO:pass account from firebase to WelcomeScreenActivity
