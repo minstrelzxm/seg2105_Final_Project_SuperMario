@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class ChooseAccountTypeActivity extends AppCompatActivity {
     private Button Adminbutton;
@@ -42,7 +41,6 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
     }
     public void CreateAccountButton(){
         Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
-        Toast.makeText(this,intent.toString(),Toast.LENGTH_LONG).show();
         startActivityForResult(intent,0);
     }
 
