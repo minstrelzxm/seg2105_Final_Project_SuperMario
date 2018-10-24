@@ -84,8 +84,13 @@ public class CreateAccountActivity extends AppCompatActivity {
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addAccount();
-                OnBackMainActivity();
+                if(createAccAccPassword==createAccReAccPassword){
+                    addAccount();
+                    OnBackMainActivity();
+                }
+                else{
+                    OnBackMainActivityFail();
+                }
             }
         });
     }
