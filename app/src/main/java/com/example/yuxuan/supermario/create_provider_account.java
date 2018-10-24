@@ -95,5 +95,22 @@ public class create_provider_account extends AppCompatActivity {
             Toast.makeText(this, "Please enter a username", Toast.LENGTH_LONG).show();
         }
     }
+    private void updateAccount(String username, String password) {
+
+        //Toast.makeText(getApplicationContext(), "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
+        DatabaseReference dA = FirebaseDatabase.getInstance().getReference("Admin_Accounts").child(username);
+        Account product = new Account(username, password, types);
+        dA.setValue(product);
+        Toast.makeText(getApplicationContext(),"Account Updated", Toast.LENGTH_LONG).show();
+    }
+
+    private boolean deleteAccount(String id) {
+
+        //Toast.makeText(getApplicationContext(), "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
+        DatabaseReference dA = FirebaseDatabase.getInstance().getReference("Admin_Accounts").child(id);
+        dA.removeValue();
+        Toast.makeText(getApplicationContext(),"Account Delected",Toast.LENGTH_LONG).show();
+        return true;
+    }
 
 }
