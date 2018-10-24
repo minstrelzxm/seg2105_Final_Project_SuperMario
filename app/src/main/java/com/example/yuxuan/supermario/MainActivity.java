@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity extends AppCompatActivity {
     private Button CreateAccountButton;
     private Button MainLoginButton;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void OnAccountTypeButton(){
         Intent intent=new Intent(getApplicationContext(),ChooseAccountTypeActivity.class);
+
         startActivityForResult(intent,0);
     }
     public void OnAccountLoginButton(){
