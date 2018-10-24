@@ -55,7 +55,7 @@ public class create_provider_account extends AppCompatActivity {
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(createAccAccPassword==createAccReAccPassword){
+                if(createAccAccPassword.getText().toString().equals(createAccReAccPassword.getText().toString())){
                     addAccount();
                     OnBackMainActivity();
                 }

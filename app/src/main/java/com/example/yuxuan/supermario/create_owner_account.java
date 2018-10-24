@@ -56,7 +56,9 @@ public class create_owner_account extends AppCompatActivity {
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(createAccAccPassword==createAccReAccPassword){
+                /**addAccount();
+                OnBackMainActivity();**/
+                if(createAccAccPassword.getText().toString().equals(createAccReAccPassword.getText().toString())){
                     addAccount();
                     OnBackMainActivity();
                 }

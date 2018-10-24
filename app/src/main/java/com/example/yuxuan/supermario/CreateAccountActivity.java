@@ -95,7 +95,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //TODO: might need a validation when creating account
                 //TODO: an correct email address.? also for provider and owner.
-                if(createAccAccPassword==createAccReAccPassword){
+                if(createAccAccPassword.getText().toString().equals(createAccReAccPassword.getText().toString())){
                     //update the empty object we created before.
                     addAccount();
                     OnBackMainActivity();
