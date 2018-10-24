@@ -41,5 +41,9 @@ public class Account {
         AccountTypes = accountTypes;
     }
 
+    public String toString(){
+        return "Username: "+username+"Password"+password;
+    }
+
 }
 
