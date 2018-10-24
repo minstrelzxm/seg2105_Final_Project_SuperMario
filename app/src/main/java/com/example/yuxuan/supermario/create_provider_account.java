@@ -42,7 +42,7 @@ public class create_provider_account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("account");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_provider_account);
+        setContentView(R.layout.create_provider_account);
 
         createAccAccName = (EditText) findViewById(R.id.createAccAccName);
         createAccAccPassword = (EditText) findViewById(R.id.createAccAccPassword);
