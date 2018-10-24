@@ -1,5 +1,9 @@
 package com.example.yuxuan.supermario;
 
+/*
+Choose account type(Admin, ServiceProvider, HomeOwner)
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,15 +20,22 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_account_type);
 
         Adminbutton=findViewById(R.id.chooseTypeAdminBtn);
+        //Create an empty admin account when click admin button.
+        //jump to CreateAccountActivity.
         Adminbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO: admin can only create once. Default username and password
+                //TODO: are both admin.
                 Account adminAccount = new Account(" "," ",MyAccountType.administrator);
                 CreateAccountButton(MyAccountType.administrator);
 
             }
         });
+
         Providerbutton=findViewById(R.id.chooseTypeProviderBtn);
+        //Create an empty service provider account when click service button.
+        //jump to create_provider_account.
         Providerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,7 +43,10 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
                 CreateAccountButton(MyAccountType.serviceProviders);
             }
         });
+
         Ownerbutton=findViewById(R.id.chooseTypeOwnerBtn);
+        //Create an empty home owner account when click owner button.
+        //jump to create_owner_account.
         Ownerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +54,10 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
                 CreateAccountButton(MyAccountType.homeOwners);
             }
         });
+
     }
+
+    //Using intent to jump to different account type creating activity.
     public void CreateAccountButton(MyAccountType currentType){
         if(currentType == MyAccountType.administrator){
             Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
@@ -55,7 +72,6 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
             startActivityForResult(intent,0);
         }
     }
-
 
 
 }

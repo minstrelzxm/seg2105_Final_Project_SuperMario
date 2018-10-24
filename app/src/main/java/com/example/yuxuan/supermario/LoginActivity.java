@@ -58,5 +58,9 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this,"Login Successfully",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
         startActivityForResult(intent,0);
+
+        /*TODO:pass account from firebase to WelcomeScreenActivity
+            intent.putExtra()
+        */
     }
 }

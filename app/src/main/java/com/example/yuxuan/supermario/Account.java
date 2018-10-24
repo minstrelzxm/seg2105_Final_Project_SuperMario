@@ -1,12 +1,14 @@
 package com.example.yuxuan.supermario;
 
 import com.google.android.gms.common.internal.AccountType;
-
+/*
+Account class, used to store user's name,password and type.
+ */
 public class Account {
     String username;
     String password;
     AccountType types;
-    //int type;
+
 
     private MyAccountType AccountTypes;
 
@@ -15,7 +17,6 @@ public class Account {
         this.username=username;
         this.password=password;
         AccountTypes = types;
-        //this.type=type;
     }
 
 

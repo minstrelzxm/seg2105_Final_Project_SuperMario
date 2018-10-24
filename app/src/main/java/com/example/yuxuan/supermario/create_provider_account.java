@@ -66,11 +66,14 @@ public class create_provider_account extends AppCompatActivity {
         });
     }
 
+    // successfully created an account and return to main activity.
     public void OnBackMainActivity(){
         Toast.makeText(this,"Successfully created an Account",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),MainActivity.class);
         startActivityForResult(intent,0);
     }
+
+    // Failed to created an Account due to not correct password.
     public void OnBackMainActivityFail(){
         Toast.makeText(this,"Fail to created an Account",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),create_provider_account.class);

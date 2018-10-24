@@ -15,13 +15,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         CreateAccountButton=findViewById(R.id.mainCreateAccBtn);
+        // jump to ChooseAccountTypeActivity
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OnAccountTypeButton();
             }
         });
+
         MainLoginButton=findViewById(R.id.mainLoginBtn);
+        // jump to LoginActivity
         MainLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    //Using intent to jump to ChooseAccountTypeActivity
     public void OnAccountTypeButton(){
         Intent intent=new Intent(getApplicationContext(),ChooseAccountTypeActivity.class);
         startActivityForResult(intent,0);
     }
+
+    //Using intent to jump to LoginActivity
     public void OnAccountLoginButton(){
         Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
         startActivityForResult(intent,0);
