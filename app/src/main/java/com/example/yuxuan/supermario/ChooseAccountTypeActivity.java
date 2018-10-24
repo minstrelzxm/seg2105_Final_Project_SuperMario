@@ -20,7 +20,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Account adminAccount = new Account(" "," ",MyAccountType.administrator);
-                CreateAccountButton();
+                CreateAccountButton(MyAccountType.administrator);
 
             }
         });
@@ -29,7 +29,7 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Account serviceAccount = new Account(" "," ",MyAccountType.serviceProviders);
-                CreateAccountButton();
+                CreateAccountButton(MyAccountType.serviceProviders);
             }
         });
         Ownerbutton=findViewById(R.id.chooseTypeOwnerBtn);
@@ -37,14 +37,23 @@ public class ChooseAccountTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Account ownerAccount = new Account(" "," ",MyAccountType.homeOwners);
-                CreateAccountButton();
+                CreateAccountButton(MyAccountType.homeOwners);
             }
         });
     }
-    public void CreateAccountButton(){
-        Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
-
-        startActivityForResult(intent,0);
+    public void CreateAccountButton(MyAccountType currentType){
+        if (currentType == MyAccountType.administrator){
+            Intent intent=new Intent(getApplicationContext(),CreateAccountActivity.class);
+            startActivityForResult(intent,0);
+        }
+        else if(currentType == MyAccountType.serviceProviders){
+            Intent intent=new Intent(getApplicationContext(),create_provider_account.class);
+            startActivityForResult(intent,0);
+        }
+        else{
+            Intent intent=new Intent(getApplicationContext(),create_owner_account.class);
+            startActivityForResult(intent,0);
+        }
     }
 
 
