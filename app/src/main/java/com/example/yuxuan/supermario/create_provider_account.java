@@ -37,7 +37,7 @@ public class create_provider_account extends AppCompatActivity {
     List<Account> accounts;
 
     protected void onCreate(Bundle savedInstanceState) {
-        databaseAccounts = FirebaseDatabase.getInstance().getReference("Provider_Accounts");
+        databaseAccounts = FirebaseDatabase.getInstance().getReference("Accounts");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_provider_account);
 
@@ -101,7 +101,7 @@ public class create_provider_account extends AppCompatActivity {
     private void updateAccount(String username, String password) {
 
         //Toast.makeText(getApplicationContext(), "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
-        DatabaseReference dA = FirebaseDatabase.getInstance().getReference("Admin_Accounts").child(username);
+        DatabaseReference dA = FirebaseDatabase.getInstance().getReference("Accounts").child(username);
         Account product = new Account(username, password, types);
         dA.setValue(product);
         Toast.makeText(getApplicationContext(),"Account Updated", Toast.LENGTH_LONG).show();
@@ -110,7 +110,7 @@ public class create_provider_account extends AppCompatActivity {
     private boolean deleteAccount(String id) {
 
         //Toast.makeText(getApplicationContext(), "NOT IMPLEMENTED YET", Toast.LENGTH_LONG).show();
-        DatabaseReference dA = FirebaseDatabase.getInstance().getReference("Admin_Accounts").child(id);
+        DatabaseReference dA = FirebaseDatabase.getInstance().getReference("Accounts").child(id);
         dA.removeValue();
         Toast.makeText(getApplicationContext(),"Account Delected",Toast.LENGTH_LONG).show();
         return true;
