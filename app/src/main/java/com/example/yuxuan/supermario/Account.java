@@ -42,8 +42,16 @@ public class Account {
     }
 
     public String toString(){
-        return "Username: "+username+"Password"+password;
+        return "This is an"+AccountTypes+" account,Username: "+username+". and \nPassword: "+password;
     }
+
+    public boolean equals(Account others){
+        if(this.username.equals(others.username)&&this.password.equals(others.password)&&this.AccountTypes.equals(others.getAccountTypes())){
+            return true;
+        }
+        return false;
+    }
+
 
 }
 

@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     List<Account> accounts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        databaseAccounts = FirebaseDatabase.getInstance().getReference("Provider_Accounts").getDatabase().getReference("Account");
+        databaseAccounts = FirebaseDatabase.getInstance().getReference("Accounts");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -54,10 +54,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(matcher.matches()){
                     Toast.makeText(getApplicationContext(),"Valid Email",Toast.LENGTH_LONG).show();
-                    OnLoginButton();
+                    if(Accountlogin(mail.getText().toString().trim(),password.getText().toString().trim())){
+                        OnLoginButton();
+                    }else {
+                        //Toast.makeText(getApplicationContext(),"uncurrent password",Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"Invaild Email",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),"Invaild Email",Toast.LENGTH_LONG).show();
+
                     /*
                     Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
                     intent.putExtra("username",mail.getText().toString().trim());
@@ -77,22 +82,21 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        accounts = new ArrayList<>();
         databaseAccounts.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 accounts.clear();
-                Toast.makeText(getApplicationContext(),"one",Toast.LENGTH_LONG).show();
                 for(DataSnapshot postSnapShot : dataSnapshot.getChildren()){
-                    Toast.makeText(getApplicationContext(),"account1",Toast.LENGTH_LONG).show();
                     if (dataSnapshot.exists()) {
-
-                        Account account = postSnapShot.getValue(Account.class);
-                        Toast.makeText(getApplicationContext(),"account1",Toast.LENGTH_LONG).show();
-                        //Toast.makeText(getApplicationContext(),account.toString(),Toast.LENGTH_LONG).show();
+                        MyAccountType eee =postSnapShot.child("accountTypes").getValue(MyAccountType.class);
+                        String user = postSnapShot.child("username").getValue(String.class);
+                        String pas= postSnapShot.child("password").getValue().toString();
+                        Account account = new Account(user,pas,eee);
                         accounts.add(account);
                     } else {
-                        Toast.makeText(getApplicationContext(),"no account",Toast.LENGTH_LONG).show();
                     }
+
                 }
 
             }
@@ -103,7 +107,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    public boolean Accountlogin(String username,String passwords){
+        if(Accountlogin(username,passwords,MyAccountType.administrator)||Accountlogin(username,passwords,MyAccountType.serviceProviders)||Accountlogin(username,passwords,MyAccountType.homeOwners)){
+            return true;
+        }
+        return false;
+    }
 
+    public boolean Accountlogin(String username,String passwords,MyAccountType myAccountType){
+        Account account = new Account(username, passwords,myAccountType);
+        Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
+        for(int i=0;i<accounts.size();i++){
+            if(accounts.get(i).equals(account)){
+                Toast.makeText(getApplicationContext(),"currect",Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
