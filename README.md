@@ -6,3 +6,4 @@ Mingwei Deng 7847379
 Jichao An 8300233
 Dengyu Liang 
 
+We used firebase as the database in delieverable 1.
