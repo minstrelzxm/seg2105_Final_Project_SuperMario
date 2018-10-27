@@ -17,9 +17,11 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         //TODO: set userRole and userName to its corresponding type
         TextView err = (TextView)findViewById(R.id.welcomeTextViewUserName);
+        TextView kkk = (TextView)findViewById(R.id.welcomeTextViewUserRole);
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
-        password = intent.getStringExtra("passowrd");
+        password = intent.getStringExtra("accounttype");
+        kkk.setText(password);
         err.setText(username);
     }
 }

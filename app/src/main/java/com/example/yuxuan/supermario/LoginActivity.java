@@ -25,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText mail, password;
     DatabaseReference databaseAccounts;
     List<Account> accounts;
+    MyAccountType types;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         databaseAccounts = FirebaseDatabase.getInstance().getReference("Accounts");
@@ -119,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
         for(int i=0;i<accounts.size();i++){
             if(accounts.get(i).equals(account)){
+                types = accounts.get(i).getAccountTypes();
                 Toast.makeText(getApplicationContext(),"currect",Toast.LENGTH_LONG).show();
                 return true;
             }
@@ -132,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this,"Login Successfully",Toast.LENGTH_LONG).show();
         Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
         intent.putExtra("username",mail.getText().toString().trim());
+        intent.putExtra("accounttype",types.toString().trim());
         intent.putExtra("pasword",password.getText().toString().trim());
         startActivityForResult(intent,0);
 
