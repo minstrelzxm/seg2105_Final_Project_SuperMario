@@ -24,4 +24,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         kkk.setText(password);
         err.setText(username);
     }
+
+    //TODO: Admin to activity_admin_page; disable other buttons
+    //TODO: provider to provider page;
+    //TODO: Owner to owner page;
 }

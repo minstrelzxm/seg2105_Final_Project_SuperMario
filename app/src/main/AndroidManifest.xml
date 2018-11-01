@@ -21,7 +21,9 @@
         <activity android:name=".WelcomeScreenActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".create_provider_account" />
-        <activity android:name=".create_owner_account"></activity>
+        <activity android:name=".create_owner_account" />
+        <activity android:name=".AdminPageActivity" />
+        <activity android:name=".ServiceList"></activity>
     </application>
 
 </manifest>
