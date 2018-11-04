@@ -1,5 +1,9 @@
 package com.example.yuxuan.supermario;
 
+/*
+We are going to use Lab5 productCatalog code as our source code
+ */
+
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

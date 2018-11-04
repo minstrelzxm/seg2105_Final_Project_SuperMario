@@ -1,10 +1,18 @@
 package com.example.yuxuan.supermario;
 /*
-Services that admin can create
+An administrator can create several service
+We are going to use Lab5 productCatalog code as our source code
  */
 public class Service {
+    private String serviceId;
     private String typeOfService;
-    private int hourRate;
+    private double hourRate;
+
+    public Service(String sID,String serviceType, double hr){
+        this.serviceId = sID;
+        this.typeOfService = serviceType;
+        this.hourRate = hr;
+    }
 
     public Service(String serviceType, int hr){
         this.typeOfService = serviceType;
@@ -19,11 +27,19 @@ public class Service {
         this.hourRate = newHourRate;
     }
 
+    public void setId(String newId){
+        this.serviceId = newId;
+    }
+
+    public String getServiceId(){
+        return this.serviceId;
+    }
+
     public String getTypeOfService(){
         return this.typeOfService;
     }
 
-    public int getHourRate(){
+    public double getHourRate(){
         return this.hourRate;
     }
 

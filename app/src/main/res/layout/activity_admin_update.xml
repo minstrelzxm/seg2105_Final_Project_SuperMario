@@ -5,16 +5,16 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextUpdateService"
+        android:id="@+id/editTextService"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Service" />
 
     <EditText
-        android:id="@+id/editTextUpdateHourRate"
+        android:id="@+id/editTextHourRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextUpdateService"
+        android:layout_below="@id/editTextService"
         android:hint="Enter Hour Rate" />
 
     <LinearLayout
