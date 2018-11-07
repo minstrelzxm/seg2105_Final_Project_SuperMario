@@ -28,23 +28,23 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                 adminBtn();
             }
         });
-        providerBtn=findViewById(R.id.welcomeProviderButton);
-        // jump to ChooseAccountTypeActivity
-        providerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                providerBtn();
-            }
-        });
-
-        ownerBtn=findViewById(R.id.welcomeOwnerButton);
-        // jump to ChooseAccountTypeActivity
-        ownerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                providerBtn();
-            }
-        });
+//        providerBtn=findViewById(R.id.welcomeProviderButton);
+//        // jump to ChooseAccountTypeActivity
+//        providerBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                providerBtn();
+//            }
+//        });
+//
+//        ownerBtn=findViewById(R.id.welcomeOwnerButton);
+//        // jump to ChooseAccountTypeActivity
+//        ownerBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                OwnerBtn();
+//            }
+//        });
 
         //TODO: set userRole and userName to its corresponding type
         TextView userNameTextView = (TextView)findViewById(R.id.welcomeTextViewUserName);
@@ -84,17 +84,17 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     //TODO: provider to provider page;
 
     //Using intent to jump to create_provider_account
-    public void providerBtn() {
-        Intent intent = new Intent(getApplicationContext(), create_provider_account.class);
-        startActivityForResult(intent, 0);
-    }
+//    public void providerBtn() {
+//        Intent intent = new Intent(getApplicationContext(), create_provider_account.class);
+//        startActivityForResult(intent, 0);
+//    }
     //TODO: Owner to owner page;
 
     //Using intent to jump to create_owner_account
-    public void OwnerBtn() {
-        Intent intent = new Intent(getApplicationContext(), create_owner_account.class);
-        startActivityForResult(intent, 0);
-    }
+//    public void OwnerBtn() {
+//        Intent intent = new Intent(getApplicationContext(), create_owner_account.class);
+//        startActivityForResult(intent, 0);
+//    }
 
 
 
