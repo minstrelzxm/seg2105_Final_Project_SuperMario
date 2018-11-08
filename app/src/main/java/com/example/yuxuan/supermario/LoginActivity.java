@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(),WelcomeScreenActivity.class);
         intent.putExtra("username",mail.getText().toString().trim());
         intent.putExtra("accounttype",types.toString().trim());
-        intent.putExtra("pasword",password.getText().toString().trim());
+        intent.putExtra("password",password.getText().toString().trim());
         startActivityForResult(intent,0);
 
         /*TODO:pass account from firebase to WelcomeScreenActivity

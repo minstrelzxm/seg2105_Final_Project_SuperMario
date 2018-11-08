@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "361969841457-i7khu73apfmthbfnd3j709dbt3mue06a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yuxuan.supermario",
+            "certificate_hash": "36ae51ca7aeee86b56a66e749dc494fd53250ff5"
+          }
+        },
+        {
           "client_id": "361969841457-pcaecggnk11kd02gjane466i0p5tjk8g.apps.googleusercontent.com",
           "client_type": 3
         }
