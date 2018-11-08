@@ -43,6 +43,9 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 //            }
 //        });
 
+<<<<<<< HEAD
+>>>>>>> 97578b9b1bc97b2c01003e6d676dfa28d59e300e
+=======
 >>>>>>> 97578b9b1bc97b2c01003e6d676dfa28d59e300e
         //TODO: set userRole and userName to its corresponding type
         TextView err = (TextView)findViewById(R.id.welcomeTextViewUserName);
