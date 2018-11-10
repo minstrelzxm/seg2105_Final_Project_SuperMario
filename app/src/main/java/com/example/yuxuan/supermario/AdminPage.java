@@ -91,7 +91,11 @@ public class AdminPage extends AppCompatActivity {
                 services.clear();
                 //update every Service Snapshot
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Service service = snapshot.getValue(Service.class);
+
+                    String serviceId =snapshot.child("username").getValue(String.class);
+                    String typeOfService =snapshot.child("typeOfService").getValue(String.class);
+                    double hourRate =snapshot.child("hourRate").getValue(double.class);
+                    Service service = new Service(serviceId,typeOfService,hourRate);
                     services.add(service);
                 }
 
