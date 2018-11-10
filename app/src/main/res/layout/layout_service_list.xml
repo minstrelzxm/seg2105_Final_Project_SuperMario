@@ -2,7 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/textViewServiceName" android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" android:text=""/>
+
+    <TextView
+        android:id="@+id/textViewServiceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
     <TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/textViewHourRate" android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" android:text=""/>
 </LinearLayout>
 
