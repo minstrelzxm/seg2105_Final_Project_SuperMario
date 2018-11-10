@@ -36,6 +36,19 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         welcomeUserName.setText(username);
         welcomeUserRole.setText(roleName);
 
+        if(roleName.equals("administrator") ){
+            welcomeProviderBtn.setEnabled(false);
+            welcomeOwnerBtn.setEnabled(false);
+        }else if(roleName.equals("serviceProviders")){
+            welcomeAdminBtn.setEnabled(false);
+            welcomeOwnerBtn.setEnabled(false);
+
+        }else if(roleName.equals("homeOwners")){
+            welcomeProviderBtn.setEnabled(false);
+            welcomeAdminBtn.setEnabled(false);
+
+        }
+
         //TODO: add onlicklistener for 3 button
         //TODO: jump only to the corresponding userRole
         welcomeAdminBtn.setOnClickListener(new View.OnClickListener() {
