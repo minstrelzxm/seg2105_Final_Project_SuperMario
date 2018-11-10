@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean Accountlogin(String username,String passwords,MyAccountType myAccountType){
         Account account = new Account(username, passwords,myAccountType);
-        Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
         for(int i=0;i<accounts.size();i++){
             if(accounts.get(i).equals(account)){
                 types = accounts.get(i).getAccountTypes();
