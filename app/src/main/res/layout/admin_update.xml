@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <EditText
         android:id="@+id/editTextService"
         android:layout_width="match_parent"
@@ -16,6 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextService"
         android:hint="Enter Hour Rate" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
