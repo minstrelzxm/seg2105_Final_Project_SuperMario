@@ -204,7 +204,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     public boolean AccountCheck(String username,String passwords,MyAccountType myAccountType){
         Account account = new Account(username, passwords,myAccountType);
-        Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
         for(int i=0;i<accounts.size();i++){
             if(accounts.get(i).equals(account)){
                 Toast.makeText(getApplicationContext(),"Cannot use same email",Toast.LENGTH_LONG).show();
