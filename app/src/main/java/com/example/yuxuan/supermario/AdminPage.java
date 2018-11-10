@@ -47,10 +47,11 @@ public class AdminPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page);
 
-        FirebaseOptions options = new FirebaseOptions.Builder().setApplicationId("1:361969841457:android:3614f17d290290cc").setApiKey("AIzaSyA4IKqllj3j0Bv1gjDjIrlQBIS8AYSuasE").setDatabaseUrl("https://seg2105finalprojectsupermario.firebaseio.com").build();
-        FirebaseApp.initializeApp(this,options,"Services");
-        FirebaseApp secondary = FirebaseApp.getInstance("Services");
-        databaseServices = FirebaseDatabase.getInstance(secondary).getReference("Services");
+        //FirebaseOptions options = new FirebaseOptions.Builder().setApplicationId("1:361969841457:android:3614f17d290290cc").setApiKey("AIzaSyA4IKqllj3j0Bv1gjDjIrlQBIS8AYSuasE").setDatabaseUrl("https://seg2105finalprojectsupermario.firebaseio.com").build();
+        //FirebaseApp.initializeApp(this,options,"Services");
+        //FirebaseApp secondary = FirebaseApp.getInstance("Services");
+        //databaseServices = FirebaseDatabase.getInstance(secondary).getReference("Services");
+        databaseServices = FirebaseDatabase.getInstance().getReference("Services");
 
         editTextService = (EditText)findViewById(R.id.editTextService);
         editTextHourRate = (EditText)findViewById(R.id.editTextHourRate);
@@ -60,9 +61,10 @@ public class AdminPage extends AppCompatActivity {
         services = new ArrayList<>();
 
         //adding an onClickListener to button
+
         buttonAddService.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 addService();
             }
         });
@@ -104,6 +106,42 @@ public class AdminPage extends AppCompatActivity {
         });
 
     }
+    //showing the service is updated or deleted
+    private void showUpdateDeleteDialog(final String sId, String serv){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.admin_update,null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editTextService = (EditText) dialogView.findViewById(R.id.editTextService);
+        final EditText editTextHourRate = (EditText) dialogView.findViewById(R.id.editTextHourRate);
+        final Button buttonUpdateService = (Button) dialogView.findViewById(R.id.buttonUpdateService);
+        final Button buttonDeleteService = (Button) dialogView.findViewById(R.id.buttonDeleteService);
+
+        dialogBuilder.setTitle(serv);
+        final AlertDialog alert = dialogBuilder.create();
+        alert.show();
+
+        buttonUpdateService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String serviceName = editTextService.getText().toString().trim();
+                double serviceHourRate = Double.parseDouble(String.valueOf(editTextHourRate.getText().toString()));
+                if(!TextUtils.isEmpty(serviceName)){
+                    updateService(sId,serviceName,serviceHourRate);
+                    alert.dismiss();
+                }
+            }
+        });
+
+        buttonDeleteService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteService(sId);
+                alert.dismiss();
+            }
+        });
+    }
 
     //TODO:create a service in create button //lab5
     //TODO:delete a service in delete button //lab5
@@ -125,51 +163,27 @@ public class AdminPage extends AppCompatActivity {
         }
     }
 
-    //showing the service is updated or deleted
-    private void showUpdateDeleteDialog(final String sId, String serv){
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.admin_update,null);
-        dialogBuilder.setView(dialogView);
 
-        final EditText editTextService = (EditText) dialogView.findViewById(R.id.editTextService);
-        final EditText editTextHourRate = (EditText) dialogView.findViewById(R.id.editTextHourRate);
-        final Button buttonUpdateService = (Button) dialogView.findViewById(R.id.buttonUpdateService);
-        final Button buttonDeleteService = (Button) dialogView.findViewById(R.id.buttonDeleteService);
-
-        dialogBuilder.setTitle(serv);
-        final AlertDialog alert = dialogBuilder.create();
-        alert.show();
-
-        buttonUpdateService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String serviceName = editTextService.getText().toString().trim();
-                double serviceHourRate = Double.parseDouble(String.valueOf(editTextHourRate.getText().toString()));
-                if(!TextUtils.isEmpty(serviceName)){
-                    updateService(sId,serviceName,serviceHourRate);
-                    alert.dismiss();
-                }
-            }
-        });
-
-        buttonDeleteService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteService(sId);
-                alert.dismiss();
-            }
-        });
-    }
 
     //Updating a service, mostly the price
-    private void updateService(String sId, String serv, double price){
+    /**private void updateService(String sId, String serv, double price){
 
+    }**/
+    private void updateService(String sId, String serv, double price) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Services").child(sId);
+        Service service = new Service(sId, serv, price);
+        dR.setValue(service);
+        Toast.makeText(getApplicationContext(), "Services Updated", Toast.LENGTH_LONG).show();
     }
 
     //Delete a service
-    private void deleteService(String sId){
 
+    private void deleteService(String sId) {
+        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Services").child(sId);
+        //Product product = new Product(id, name, price);
+        dR.removeValue();
+        Toast.makeText(getApplicationContext(), "Services Deleted", Toast.LENGTH_LONG).show();
+        //return true;
     }
 
 
