@@ -58,6 +58,13 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             }
         });
 
+        welcomeProviderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                serviceProviderJump();
+            }
+        });
+
 
 //        if(roleName =="administrator"){
 //            //roleName from MyAccountType
@@ -83,5 +90,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     public void adminJump() {
         Intent intent = new Intent(getApplicationContext(), AdminPage.class);
         startActivityForResult(intent, 0);
+    }
+
+    public void serviceProviderJump(){
+        Intent intent = new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        startActivityForResult(intent,0);
     }
 }

@@ -23,7 +23,11 @@
         <activity android:name=".create_provider_account" />
         <activity android:name=".create_owner_account" />
         <activity android:name=".ServiceList" />
-        <activity android:name=".AdminPage"></activity>
+        <activity android:name=".AdminPage" />
+        <activity android:name=".ServiceProviderInfoPageActivity" />
+        <activity android:name=".ServiceProviderMainPage" />
+        <activity android:name=".ServiceProviderAddServiceActivity" />
+        <activity android:name=".ServiceProviderAvailabilitiesActivity"></activity>
     </application>
 
 </manifest>
