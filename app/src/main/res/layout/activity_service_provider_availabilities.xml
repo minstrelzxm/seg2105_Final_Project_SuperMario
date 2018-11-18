@@ -7,12 +7,10 @@
     tools:context=".ServiceProviderAvailabilitiesActivity">
 
 
-
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="236dp"
-        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -30,47 +28,53 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <RadioButton
-            android:id="@+id/RadioButtonMon"
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/RadioButtonTue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            <RadioButton
+                android:id="@+id/RadioButtonMon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Monday" />
 
-        <RadioButton
-            android:id="@+id/RadioButtonWed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wednesday" />
+            <RadioButton
+                android:id="@+id/RadioButtonTue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tuesday" />
 
-        <RadioButton
-            android:id="@+id/RadioButtonThurs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thursday" />
+            <RadioButton
+                android:id="@+id/RadioButtonWed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wednesday" />
 
-        <RadioButton
-            android:id="@+id/RadioButtonFri"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Friday" />
+            <RadioButton
+                android:id="@+id/RadioButtonThurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thursday" />
 
-        <RadioButton
-            android:id="@+id/RadioButtonSat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Saturday" />
+            <RadioButton
+                android:id="@+id/RadioButtonFri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Friday" />
 
-        <RadioButton
-            android:id="@+id/RadioButtonSun"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sunday" />
+            <RadioButton
+                android:id="@+id/RadioButtonSat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Saturday" />
+
+            <RadioButton
+                android:id="@+id/RadioButtonSun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sunday" />
+        </RadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
