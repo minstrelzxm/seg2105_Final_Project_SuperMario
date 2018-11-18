@@ -6,4 +6,138 @@
     android:layout_height="match_parent"
     tools:context=".ServiceProviderAvailabilitiesActivity">
 
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="236dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please choose a day"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonMon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monday" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonTue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tuesday" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonWed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wednesday" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonThurs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thursday" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonFri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friday" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonSat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saturday" />
+
+        <RadioButton
+            android:id="@+id/RadioButtonSun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunday" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="209dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please Choose a Time"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkBoxEightToTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8-10AM" />
+
+        <CheckBox
+            android:id="@+id/checkBoxTenToTweleve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10-12AM" />
+
+        <CheckBox
+            android:id="@+id/checkBoxTwelveToTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12-2PM" />
+
+        <CheckBox
+            android:id="@+id/checkBoxTwoToFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2-4PM" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFourToSix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4-6PM" />
+
+        <CheckBox
+            android:id="@+id/checkBoxSixToEight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6-8PM" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
