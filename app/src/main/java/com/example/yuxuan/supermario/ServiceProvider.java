@@ -39,6 +39,7 @@ public class ServiceProvider {
     }
 
     public void setLicensed(String licensed){
+
         this.licensed = licensed;
     }
 }
