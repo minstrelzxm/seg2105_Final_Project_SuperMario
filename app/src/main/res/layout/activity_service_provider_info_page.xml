@@ -16,14 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/Address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Address" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/EditAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,14 +44,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/PhoneNum"
             android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="PhoneNumber" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/EditPhoneNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,14 +71,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/NameOfCompany"
             android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Name Of Company" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/EditNameOfCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -98,14 +98,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/GeneralInfo"
             android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="General Description" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/EditGeneralInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -125,14 +125,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/Licensed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Licensed" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/BooleanLicensed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
