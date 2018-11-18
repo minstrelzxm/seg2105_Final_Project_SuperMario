@@ -103,37 +103,43 @@
             android:id="@+id/checkBoxEightToTen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="8-10AM" />
+            android:text="8-10AM"
+            android:onClick="selectItem"/>
 
         <CheckBox
             android:id="@+id/checkBoxTenToTweleve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10-12AM" />
+            android:text="10-12AM"
+            android:onClick="selectItem"/>
 
         <CheckBox
             android:id="@+id/checkBoxTwelveToTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12-2PM" />
+            android:text="12-2PM"
+            android:onClick="selectItem"/>
 
         <CheckBox
             android:id="@+id/checkBoxTwoToFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2-4PM" />
+            android:text="2-4PM"
+            android:onClick="selectItem"/>
 
         <CheckBox
             android:id="@+id/checkBoxFourToSix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4-6PM" />
+            android:text="4-6PM"
+            android:onClick="selectItem"/>
 
         <CheckBox
             android:id="@+id/checkBoxSixToEight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="6-8PM" />
+            android:text="6-8PM"
+            android:onClick="selectItem"/>
     </LinearLayout>
 
     <Button
