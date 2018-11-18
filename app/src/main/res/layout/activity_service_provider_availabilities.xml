@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ServiceProviderAvailabilitiesActivity">
 
+
+
     <LinearLayout
         android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
@@ -28,44 +30,44 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <CheckBox
-            android:id="@+id/checkBoxMon"
+        <RadioButton
+            android:id="@+id/RadioButtonMon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Monday" />
 
-        <CheckBox
-            android:id="@+id/checkBoxTue"
+        <RadioButton
+            android:id="@+id/RadioButtonTue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tuesday" />
 
-        <CheckBox
-            android:id="@+id/checkBoxWed"
+        <RadioButton
+            android:id="@+id/RadioButtonWed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Wednesday" />
 
-        <CheckBox
-            android:id="@+id/checkBoxThurs"
+        <RadioButton
+            android:id="@+id/RadioButtonThurs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thursday" />
 
-        <CheckBox
-            android:id="@+id/checkBoxFri"
+        <RadioButton
+            android:id="@+id/RadioButtonFri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Friday" />
 
-        <CheckBox
-            android:id="@+id/checkBoxSat"
+        <RadioButton
+            android:id="@+id/RadioButtonSat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Saturday" />
 
-        <CheckBox
-            android:id="@+id/checkBoxSun"
+        <RadioButton
+            android:id="@+id/RadioButtonSun"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sunday" />
