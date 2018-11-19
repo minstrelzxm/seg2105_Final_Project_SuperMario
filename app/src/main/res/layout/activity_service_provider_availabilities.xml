@@ -32,47 +32,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonMon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Monday" />
+                android:text="Monday"
+                android:onClick="selectDay"/>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonTue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tuesday" />
+                android:text="Tuesday"
+                android:onClick="selectDay"/>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonWed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Wednesday" />
+                android:text="Wednesday"
+                android:onClick="selectDay"/>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonThurs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thursday" />
+                android:text="Thursday"
+                android:onClick="selectDay"/>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonFri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Friday" />
+                android:text="Friday"
+                android:onClick="selectDay"/>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonSat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Saturday" />
+                android:text="Saturday"
+                android:onClick="selectDay"/>
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/RadioButtonSun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sunday" />
+                android:text="Sunday"
+                android:onClick="selectDay"/>
         </RadioGroup>
 
     </LinearLayout>
@@ -83,7 +90,7 @@
         android:layout_height="209dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/EnterButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
@@ -104,50 +111,64 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="8-10AM"
-            android:onClick="selectItem"/>
-
+            android:onClick="selectTime"/>
         <CheckBox
             android:id="@+id/checkBoxTenToTweleve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="10-12AM"
-            android:onClick="selectItem"/>
+            android:onClick="selectTime"/>
 
         <CheckBox
             android:id="@+id/checkBoxTwelveToTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12-2PM"
-            android:onClick="selectItem"/>
+            android:onClick="selectTime"/>
 
         <CheckBox
             android:id="@+id/checkBoxTwoToFour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2-4PM"
-            android:onClick="selectItem"/>
+            android:onClick="selectTime"/>
 
         <CheckBox
             android:id="@+id/checkBoxFourToSix"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="4-6PM"
-            android:onClick="selectItem"/>
+            android:onClick="selectTime"/>
 
         <CheckBox
             android:id="@+id/checkBoxSixToEight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="6-8PM"
-            android:onClick="selectItem"/>
+            android:onClick="selectTime"/>
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/EnterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter"
+        android:onClick="finalSelection"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
 </android.support.constraint.ConstraintLayout>
