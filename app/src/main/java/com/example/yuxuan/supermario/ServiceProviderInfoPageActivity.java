@@ -47,6 +47,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseInfo = FirebaseDatabase.getInstance().getReference("ServiceProviderInfo");
         setContentView(R.layout.activity_service_provider_info_page);
         editAddress = (EditText) findViewById(R.id.EditAddress);
         editPhoneNum = (EditText) findViewById(R.id.EditPhoneNum);
@@ -66,9 +67,20 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
     }
 
     //TODO: add this service provider to database
-    public void serviceProviderJump(){
-        Intent intent = new Intent(getApplicationContext(),ServiceProviderMainPage.class);
-        startActivityForResult(intent,0);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //attaching value event listener
+        databaseInfo.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void addInfo() {
