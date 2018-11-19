@@ -115,9 +115,15 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
 
             //displaying a success toast
             Toast.makeText(this, "info added", Toast.LENGTH_LONG).show();
+            OnBackServiceProviderActivity();
         } else {
             //if the value is not given displaying a toast
             Toast.makeText(this, "Please enter a necessary text(s)", Toast.LENGTH_LONG).show();
         }
+    }
+    public void OnBackServiceProviderActivity(){
+        Toast.makeText(this,"Successfully created an Account",Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        startActivityForResult(intent,0);
     }
 }
