@@ -8,9 +8,11 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -125,6 +127,11 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         final Button buttonUpdateService = (Button) dialogView.findViewById(R.id.buttonUpdateService);
         final Button buttonDeleteService = (Button) dialogView.findViewById(R.id.buttonDeleteService);
         final Button buttonAddtoserver = (Button) dialogView.findViewById(R.id.buttonAddtoService);
+        final Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinner_date) ;
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.planets, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
 
         dialogBuilder.setTitle(serv);
         final AlertDialog alert = dialogBuilder.create();
@@ -153,8 +160,9 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String dateService = editTextData.getText().toString().trim();
+                String date = String.valueOf(spinner.getSelectedItem());
                 if(!TextUtils.isEmpty(dateService)){
-                    addtoService(dateService);
+                    addtoService(dateService, date);
                     alert.dismiss();
                 }
             }
@@ -204,6 +212,9 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         //return true;
     }
 
-    public void addtoService(String sId){}
+    public void addtoService(String sId, String date){
+        //todo: unfinished
+        Toast.makeText(this,date+" "+sId,Toast.LENGTH_LONG).show();
+    }
 
 }
