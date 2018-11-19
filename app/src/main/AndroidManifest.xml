@@ -27,7 +27,8 @@
         <activity android:name=".ServiceProviderInfoPageActivity" />
         <activity android:name=".ServiceProviderMainPage" />
         <activity android:name=".ServiceProviderAddServiceActivity" />
-        <activity android:name=".ServiceProviderAvailabilitiesActivity"></activity>
+        <activity android:name=".ServiceProviderAvailabilitiesActivity" />
+        <activity android:name=".service_provider_updated_infopage"></activity>
     </application>
 
 </manifest>
