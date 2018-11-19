@@ -149,7 +149,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         String password = createAccAccPassword.getText().toString().trim();
 
         if(!TextUtils.isEmpty(username)){
-            String id = username;
+            String id = databaseAccounts.push().getKey();
             //Update the empty account we created before.
             Account account = new Account(username,password,types);
 
