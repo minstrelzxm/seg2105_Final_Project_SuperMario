@@ -83,7 +83,8 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
 
             //getting a unique id using push().getKey() method
             //it will create a unique id and we will use it as the Primary Key for our Product
-            String id = databaseInfo.push().getKey();
+            //String id = databaseInfo.push().getKey();
+            String id = address;
 
             //creating an Object
             ServiceProviderInfo info = new ServiceProviderInfo(id,address,phoneNum,nameOfCompany,generalInfo,licensed);
