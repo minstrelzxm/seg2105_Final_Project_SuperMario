@@ -58,12 +58,17 @@ public class create_owner_account extends AppCompatActivity {
         BackMainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /**addAccount();
-                OnBackMainActivity();**/
+                //TODO: might need a validation when creating account
+                //TODO: an correct email address.? also for provider and owner.
                 if(createAccAccPassword.getText().toString().equals(createAccReAccPassword.getText().toString())){
                     if(checkEmail()){
-                        addAccount();
-                        OnBackMainActivity();
+                        if(AccountCheck(createAccAccPassword.getText().toString(),createAccReAccPassword.getText().toString())){
+                            addAccount();
+                            OnBackMainActivity();
+                        }
+                        else{
+                            OnBackMainActivityFailEmail();
+                        }
                     }
                     else{
                         OnBackMainActivityFailEmail();
@@ -72,7 +77,6 @@ public class create_owner_account extends AppCompatActivity {
                 else{
                     OnBackMainActivityFail();
                 }
-
             }
         });
     }
@@ -100,7 +104,7 @@ public class create_owner_account extends AppCompatActivity {
         String password = createAccAccPassword.getText().toString().trim();
 
         if(!TextUtils.isEmpty(username)){
-            String id = databaseAccounts.push().getKey();
+            String id = username;
             Account account = new Account(username,password,types);
 
             databaseAccounts.child(id).setValue(account);
@@ -156,6 +160,23 @@ public class create_owner_account extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+    public boolean AccountCheck(String username,String passwords,MyAccountType myAccountType){
+        Account account = new Account(username, passwords,myAccountType);
+        //Toast.makeText(getApplicationContext(),accounts.get(4).toString(),Toast.LENGTH_LONG).show();
+        for(int i=0;i<accounts.size();i++){
+            if(accounts.get(i).equals(account)){
+                Toast.makeText(getApplicationContext(),"Cannot use same email",Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean AccountCheck(String username,String passwords){
+        if(AccountCheck(username,passwords,MyAccountType.administrator)||AccountCheck(username,passwords,MyAccountType.serviceProviders)||AccountCheck(username,passwords,MyAccountType.homeOwners)){
+            return true;
+        }
+        return false;
     }
 
 }

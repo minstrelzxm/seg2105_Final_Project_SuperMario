@@ -31,8 +31,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         TextView welcomeUserName = (TextView)findViewById(R.id.welcomeTextViewUserName);
         TextView welcomeUserRole = (TextView)findViewById(R.id.welcomeTextViewUserRole);
         Intent intent = getIntent();
+
         username = intent.getStringExtra("username");
         roleName = intent.getStringExtra("accounttype");
+
         welcomeUserName.setText(username);
         welcomeUserRole.setText(roleName);
 
