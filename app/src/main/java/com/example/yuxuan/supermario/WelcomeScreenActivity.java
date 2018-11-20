@@ -16,6 +16,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
     private Button welcomeAdminBtn;
     private Button welcomeProviderBtn;
     private Button welcomeOwnerBtn;
+    Intent intentss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +31,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         TextView welcomeUserName = (TextView)findViewById(R.id.welcomeTextViewUserName);
         TextView welcomeUserRole = (TextView)findViewById(R.id.welcomeTextViewUserRole);
-        Intent intent = getIntent();
+        intentss = getIntent();
 
-        username = intent.getStringExtra("username");
-        roleName = intent.getStringExtra("accounttype");
+        username = intentss.getStringExtra("username");
+        roleName = intentss.getStringExtra("accounttype");
 
         welcomeUserName.setText(username);
         welcomeUserRole.setText(roleName);
@@ -96,6 +97,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     public void serviceProviderJump(){
         Intent intent = new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        intent.putExtra("username",intentss.getStringExtra("username"));
         startActivityForResult(intent,0);
     }
 }
