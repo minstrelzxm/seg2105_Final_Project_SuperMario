@@ -1,10 +1,12 @@
 package com.example.yuxuan.supermario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +39,10 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
     Button buttonAddService;
     ListView listViewServices;
 
+    Intent intentss;
     List<Service> services;
     DatabaseReference databaseServices;
+    DatabaseReference databaseProviderService;
 
 
     @Override
@@ -50,11 +55,13 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         //FirebaseApp secondary = FirebaseApp.getInstance("Services");
         //databaseServices = FirebaseDatabase.getInstance(secondary).getReference("Services");
         databaseServices = FirebaseDatabase.getInstance().getReference("Services");
+        databaseProviderService = FirebaseDatabase.getInstance().getReference("ProviderServices");
 
         editTextService = (EditText)findViewById(R.id.editTextService);
         editTextHourRate = (EditText)findViewById(R.id.editTextHourRate);
         listViewServices = (ListView)findViewById(R.id.listViewServices);
         buttonAddService = (Button)findViewById(R.id.addButton);
+        intentss = getIntent();
 
         services = new ArrayList<>();
 
@@ -94,6 +101,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
                     String typeOfService =snapshot.child("typeOfService").getValue(String.class);
                     Double hourRate =snapshot.child("hourRate").getValue(Double.class);
                     Service service = new Service(serviceId,typeOfService,hourRate);
+                    //Service service = snapshot.getValue(Service.class);
                     services.add(service);
                 }
 
@@ -107,9 +115,22 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
             }
         });
 
+        databaseProviderService.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //update every Service Snapshot
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
     //showing the service is updated or deleted
     private void showUpdateDeleteDialog(Service service){
+        final Service service1 = service;
         final String sId = service.getServiceId();
         String serv = service.getTypeOfService();
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
@@ -123,7 +144,8 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         final TextView textViewPrices = (TextView) dialogView.findViewById(R.id.textViewPrices);
         textViewPrices.setText("prices: "+service.getHourRate());
         final EditText editTextHourRate = (EditText) dialogView.findViewById(R.id.editTextHourRate);
-        final EditText editTextData = (EditText) dialogView.findViewById(R.id.editTextdate);
+        final EditText editTextStart = (EditText) dialogView.findViewById(R.id.editTextStart);
+        final EditText editTextEnd = (EditText) dialogView.findViewById(R.id.editTextEnd);
         final Button buttonUpdateService = (Button) dialogView.findViewById(R.id.buttonUpdateService);
         final Button buttonDeleteService = (Button) dialogView.findViewById(R.id.buttonDeleteService);
         final Button buttonAddtoserver = (Button) dialogView.findViewById(R.id.buttonAddtoService);
@@ -159,10 +181,15 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         buttonAddtoserver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dateService = editTextData.getText().toString().trim();
+                String dateService = editTextStart.getText().toString().trim();
+                String dateEnd = editTextEnd.getText().toString().trim();
                 String date = String.valueOf(spinner.getSelectedItem());
-                if(!TextUtils.isEmpty(dateService)){
-                    addtoService(dateService, date);
+                if(!TextUtils.isEmpty(dateService)||!TextUtils.isEmpty(dateEnd)){
+                    try {
+                        addtoService(service1,dateService, dateEnd, date);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
                     alert.dismiss();
                 }
             }
@@ -212,9 +239,24 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         //return true;
     }
 
-    public void addtoService(String sId, String date){
+    public void addtoService(Service service,String dateStart,String dateEnd, String date) throws UnsupportedEncodingException {
         //todo: unfinished
-        Toast.makeText(this,date+" "+sId,Toast.LENGTH_LONG).show();
+        String provider = intentss.getStringExtra("username");
+        String[] dates = new String[]{date,dateStart,dateEnd};
+        Log.d("adtoServices", provider.toString());
+        Log.d("DateInfo", dates.toString());
+        String reference = "ProviderServices/"+Sha1.hash(provider.toString());
+        Log.d("DateInfo", reference);
+        ProSer Proser = new ProSer(provider,service,date, dateStart,dateEnd );
+
+        DatabaseReference dF = FirebaseDatabase.getInstance().getReference(reference);
+        String ProviderID = dF.push().getKey();
+        dF.child(ProviderID).setValue(provider);
+        dF.child(ProviderID).push().setValue(Proser);
+
+
+
+
     }
 
 }

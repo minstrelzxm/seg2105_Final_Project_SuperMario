@@ -78,12 +78,21 @@
                 android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/editTextdate"
+                android:id="@+id/editTextStart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter Service Date"
+                android:hint="Enter Service Start"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/editTextEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Enter Service End"
                 android:inputType="time" />
         </LinearLayout>
 

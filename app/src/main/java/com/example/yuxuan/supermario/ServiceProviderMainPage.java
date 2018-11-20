@@ -11,6 +11,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
     private Button spInfoBtn;
     private Button spAddServiceBtn;
     private Button spAvailabilitiesBtn;
+    Intent intentss;
     String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
         spInfoBtn = (Button)findViewById(R.id.serviceProviderMainInfoBtn);
         spAddServiceBtn = (Button)findViewById(R.id.serviceProviderMainAddServiceBtn);
         spAvailabilitiesBtn = (Button)findViewById(R.id.serviceProviderMainAvailabtn);
-
+        intentss = getIntent();
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
 
@@ -54,6 +55,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
 
     public void addServiceJump(){
         Intent intent = new Intent(getApplicationContext(), ServiceProviderAddServiceActivity.class);
+        intent.putExtra("username",intentss.getStringExtra("username"));
         startActivityForResult(intent, 0);
 
     }
