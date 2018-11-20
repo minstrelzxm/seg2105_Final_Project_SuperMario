@@ -13,11 +13,14 @@ import static org.junit.Assert.assertNotNull;
 
 public class ServiceProviderInfoPageActivityTest {
 
+    //The Unit Test for Demo 3
+    //Three Unit Test Cases
     @Rule
     public ActivityTestRule<ServiceProviderInfoPageActivity> mActivityTestRule= new ActivityTestRule<ServiceProviderInfoPageActivity>(ServiceProviderInfoPageActivity.class);
     private ServiceProviderInfoPageActivity mActivity=null;
     private TextView text;
 
+    //Test in ServicesProviderInfoPageActivity
     @Before
     public void setUp() throws Exception{
         mActivity=mActivityTestRule.getActivity();
@@ -26,6 +29,7 @@ public class ServiceProviderInfoPageActivityTest {
 
     @Test
     @UiThreadTest
+    //Test the address
     public void checkAddress() throws Exception{
         assertNotNull(mActivity.findViewById(R.id.Address));
         text = mActivity.findViewById(R.id.EditAddress);
@@ -36,6 +40,7 @@ public class ServiceProviderInfoPageActivityTest {
 
     @Test
     @UiThreadTest
+    //Test the Lienses
     public void checkLiensed() throws Exception{
         assertNotNull(mActivity.findViewById(R.id.Licensed));
         text = mActivity.findViewById(R.id.BooleanLicensed);
@@ -46,6 +51,7 @@ public class ServiceProviderInfoPageActivityTest {
 
     @Test
     @UiThreadTest
+    //Test the companyName
     public void checkCompanyName() throws Exception{
         assertNotNull(mActivity.findViewById(R.id.NameOfCompany));
         text = mActivity.findViewById(R.id.EditNameOfCompany);

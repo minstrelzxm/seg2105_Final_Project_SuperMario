@@ -16,6 +16,8 @@ import static org.junit.Assert.assertNotNull;
 
 public class CreateAccountActivityTest {
 
+    //The Unit Test for Demo 2
+
     @Rule
     public ActivityTestRule<CreateAccountActivity> mActivityTestRule= new ActivityTestRule<CreateAccountActivity>(CreateAccountActivity.class);
     private CreateAccountActivity mActivity=null;
