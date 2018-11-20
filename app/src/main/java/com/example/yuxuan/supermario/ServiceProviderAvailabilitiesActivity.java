@@ -8,38 +8,45 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class ServiceProviderAvailabilitiesActivity extends AppCompatActivity {
 
-//    private Button EneterButton;
+    private Button BackButton;
     TextView final_text;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
     ArrayList<String> selection = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_availabilities);
+
+        radioGroup=findViewById(R.id.radioGroup);
         final_text = findViewById(R.id.Test);
         final_text.setEnabled(false);
 
-//        EneterButton=findViewById(R.id.EnterButton);
-//        // jump to ChooseAccountTypeActivity
-//        EneterButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                OnEntereButton();
-//            }
-//        });
-//
-//    }
-//    public void OnEntereButton(){
-//        Intent intent=new Intent(getApplicationContext(),ServiceProvider.class);
-//        startActivityForResult(intent,0);
+        BackButton=findViewById(R.id.BackButton);
+        // jump to ChooseAccountTypeActivity
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnBackButton();
+            }
+        });
+
+    }
+    public void OnBackButton(){
+        Intent intent=new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        startActivityForResult(intent,0);
     }
 
     public void finalSelection(View view){
@@ -49,7 +56,7 @@ public class ServiceProviderAvailabilitiesActivity extends AppCompatActivity {
         for(String Selections: selection){
             final_time_selection = final_time_selection + Selections + "\n";
         }
-        final_text.setText(final_time_selection);
+        final_text.setText(radioButton.getText()+ "\n" +final_time_selection);
         final_text.setEnabled(true);
     }
 
@@ -80,168 +87,52 @@ public class ServiceProviderAvailabilitiesActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.checkBoxTwelveToTwo:
                 if (checked){
-                    selection.add("12 to 2");
+                    selection.add("12am to 2pm");
                 }
                 else{
-                    selection.remove("12 to 2");
+                    selection.remove("12am to 2pm");
                 }
                 break;
         }
         switch (view.getId()){
             case R.id.checkBoxTwoToFour:
                 if (checked){
-                    selection.add("2 to 4");
+                    selection.add("2pm to 4pm");
                 }
                 else{
-                    selection.remove("2 to 4");
+                    selection.remove("2pm to 4pm");
                 }
                 break;
         }
         switch (view.getId()){
             case R.id.checkBoxFourToSix:
                 if (checked){
-                    selection.add("4 to 6");
+                    selection.add("4pm to 6pm");
                 }
                 else{
-                    selection.remove("4 to 6");
+                    selection.remove("4pm to 6pm");
                 }
                 break;
         }
         switch (view.getId()){
             case R.id.checkBoxSixToEight:
                 if (checked){
-                    selection.add("6 to 8");
+                    selection.add("6pm to 8pm");
                 }
                 else{
-                    selection.remove("6 to 8");
+                    selection.remove("6pm to 8pm");
                 }
                 break;
         }
 
     }
     public void selectDay(View view){
+        int radioId = radioGroup.getCheckedRadioButtonId();
 
-        boolean checked = ((CheckBox) view).isChecked();
+        radioButton=findViewById(radioId);
 
-        switch (view.getId()){
-            case R.id.RadioButtonMon:
-                if (checked){
-                      selection.add("Monday");
-                }
-                else{
-                    selection.remove("Monday");
-                }
-                break;
-        }
-        switch (view.getId()){
-            case R.id.RadioButtonTue:
-                if (checked){
-                    selection.add("Tuesday");
-                }
-                else{
-                    selection.remove("Tuesday");
-                }
-                break;
-        }
-        switch (view.getId()){
-            case R.id.RadioButtonWed:
-                if (checked){
-                    selection.add("Wednesday");
-                }
-                else{
-                    selection.remove("Wednesday");
-                }
-                break;
-        }
-        switch (view.getId()){
-            case R.id.RadioButtonThurs:
-                if (checked){
-                    selection.add("Thursday");
-                }
-                else{
-                    selection.remove("Thursday");
-                }
-                break;
-        }
-        switch (view.getId()){
-            case R.id.RadioButtonFri:
-                if (checked){
-                    selection.add("Friday");
-                }
-                else{
-                    selection.remove("Friday");
-                }
-                break;
-        }
-        switch (view.getId()){
-            case R.id.RadioButtonSat:
-                if (checked){
-                    selection.add("Saturday");
-                }
-                else{
-                    selection.remove("Saturday");
-                }
-                break;
-        }
-        switch (view.getId()){
-            case R.id.RadioButtonSun:
-                if (checked){
-                    selection.add("Sunday");
-                }
-                else{
-                    selection.remove("Sunday");
-                }
-                break;
-        }
+        Toast.makeText(this, "Selected Raido Button"+radioButton.getText(),Toast.LENGTH_SHORT).show();
 
     }
 
-    public void selection(View view){
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch (view.getId()){
-            case R.id.checkBoxEightToTen:
-                if(checked)
-                selection.add("8-10AM");
-                else{
-                    selection.remove("8-10AM");
-                }
-                break;
-            case R.id.checkBoxTenToTweleve:
-                if(checked)
-                    selection.add("10-12AM");
-                else{
-                    selection.remove("10-12AM");
-                }
-                break;
-            case R.id.checkBoxTwelveToTwo:
-                if(checked)
-                    selection.add("12-2PM");
-                else{
-                    selection.remove("12-2PM");
-                }
-                break;
-            case R.id.checkBoxTwoToFour:
-                if(checked)
-                    selection.add("2-4PM");
-                else{
-                    selection.remove("2-4PM");
-                }
-                break;
-            case R.id.checkBoxFourToSix:
-                if(checked)
-                    selection.add("4-6PM");
-                else{
-                    selection.remove("4-6PM");
-                }
-                break;
-            case R.id.checkBoxSixToEight:
-                if(checked)
-                    selection.add("6-8PM");
-                else{
-                    selection.remove("6-8PM");
-                }
-                break;
-        }
-    }
 }
