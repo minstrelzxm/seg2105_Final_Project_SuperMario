@@ -1,5 +1,6 @@
 package com.example.yuxuan.supermario;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -16,15 +17,17 @@ public class ServiceProviderInfoShown extends AppCompatActivity {
     private TextView editLicensed;
     private Button changeInfo;
     DatabaseReference databaseInfo;
-    String username;
-    String roleName;
+    String address;
+    String phoneNum;
+    String nameOfCompany;
+    String generalInfo;
+    String licensed;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_info_shown);
-
-
 
     }
 }

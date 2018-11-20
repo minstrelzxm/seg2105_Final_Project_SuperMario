@@ -11,6 +11,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
     private Button spInfoBtn;
     private Button spAddServiceBtn;
     private Button spAvailabilitiesBtn;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,9 @@ public class ServiceProviderMainPage extends AppCompatActivity {
         spInfoBtn = (Button)findViewById(R.id.serviceProviderMainInfoBtn);
         spAddServiceBtn = (Button)findViewById(R.id.serviceProviderMainAddServiceBtn);
         spAvailabilitiesBtn = (Button)findViewById(R.id.serviceProviderMainAvailabtn);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
 
         spInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
