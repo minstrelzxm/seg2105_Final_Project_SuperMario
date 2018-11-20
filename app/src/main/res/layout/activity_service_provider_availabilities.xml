@@ -30,51 +30,52 @@
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup">
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonMon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Monday"
                 android:onClick="selectDay"/>
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonTue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tuesday"
                 android:onClick="selectDay"/>
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonWed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Wednesday"
                 android:onClick="selectDay"/>
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonThurs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Thursday"
                 android:onClick="selectDay"/>
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonFri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Friday"
                 android:onClick="selectDay"/>
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonSat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Saturday"
                 android:onClick="selectDay"/>
 
-            <CheckBox
+            <RadioButton
                 android:id="@+id/RadioButtonSun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,17 +154,28 @@
         android:id="@+id/EnterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter"
         android:onClick="finalSelection"
+        android:text="Enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.719"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World"
+        android:text="Time Slot"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
