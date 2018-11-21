@@ -34,8 +34,6 @@ We are going to use Lab5 productCatalog code as our source code
 
 
 public class ServiceProviderAddServiceActivity extends AppCompatActivity {
-    EditText editTextService;
-    EditText editTextHourRate;
     Button buttonAddService;
     ListView listViewServices;
 
@@ -56,23 +54,10 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         //databaseServices = FirebaseDatabase.getInstance(secondary).getReference("Services");
         databaseServices = FirebaseDatabase.getInstance().getReference("Services");
         databaseProviderService = FirebaseDatabase.getInstance().getReference("ProviderServices");
-
-        editTextService = (EditText)findViewById(R.id.editTextService);
-        editTextHourRate = (EditText)findViewById(R.id.editTextHourRate);
         listViewServices = (ListView)findViewById(R.id.listViewServices);
-        buttonAddService = (Button)findViewById(R.id.addButton);
         intentss = getIntent();
 
         services = new ArrayList<>();
-
-        //adding an onClickListener to button
-
-        buttonAddService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addService();
-            }
-        });
 
         //adding an onClickListener to the item in the item view list
         listViewServices.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -96,6 +81,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
                 services.clear();
                 //update every Service Snapshot
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Log.d("DateInfo", snapshot.toString());
 
                     String serviceId =snapshot.child("serviceId").getValue(String.class);
                     String typeOfService =snapshot.child("typeOfService").getValue(String.class);
@@ -137,17 +123,16 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.servicesprovider_services_add,null);
         dialogBuilder.setView(dialogView);
-
-        final EditText editTextService = (EditText) dialogView.findViewById(R.id.editTextService);
         final TextView textViewProductname = (TextView) dialogView.findViewById(R.id.textViewServices);
         textViewProductname.setText("Services Name:"+serv);
         final TextView textViewPrices = (TextView) dialogView.findViewById(R.id.textViewPrices);
         textViewPrices.setText("prices: "+service.getHourRate());
-        final EditText editTextHourRate = (EditText) dialogView.findViewById(R.id.editTextHourRate);
         final EditText editTextStart = (EditText) dialogView.findViewById(R.id.editTextStart);
         final EditText editTextEnd = (EditText) dialogView.findViewById(R.id.editTextEnd);
         final Button buttonUpdateService = (Button) dialogView.findViewById(R.id.buttonUpdateService);
         final Button buttonDeleteService = (Button) dialogView.findViewById(R.id.buttonDeleteService);
+        buttonUpdateService.setEnabled(false);
+        buttonDeleteService.setEnabled(false);
         final Button buttonAddtoserver = (Button) dialogView.findViewById(R.id.buttonAddtoService);
         final Spinner spinner = (Spinner) dialogView.findViewById(R.id.spinner_date) ;
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.planets, android.R.layout.simple_spinner_item);
@@ -159,25 +144,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         final AlertDialog alert = dialogBuilder.create();
         alert.show();
 
-        buttonUpdateService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String serviceName = editTextService.getText().toString().trim();
-                double serviceHourRate = Double.parseDouble(String.valueOf(editTextHourRate.getText().toString()));
-                if(!TextUtils.isEmpty(serviceName)){
-                    updateService(sId,serviceName,serviceHourRate);
-                    alert.dismiss();
-                }
-            }
-        });
 
-        buttonDeleteService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteService(sId);
-                alert.dismiss();
-            }
-        });
         buttonAddtoserver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,48 +163,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         });
     }
 
-    //TODO:create a service in create button //lab5
-    //TODO:delete a service in delete button //lab5
-    //TODO:edit a service in update button //lab5
-    //Adding service to the item view list
-    private void addService(){
-        String serviceName = editTextService.getText().toString().trim();
-        double hourRate = Double.parseDouble(String.valueOf(editTextHourRate.getText().toString()));
 
-        if(!TextUtils.isEmpty(serviceName)){
-            String serviceID = databaseServices.push().getKey();
-            Service service = new Service(serviceID,serviceName,hourRate);
-            databaseServices.child(serviceID).setValue(service);
-            editTextService.setText("");
-            editTextHourRate.setText("");
-            Toast.makeText(this,"Service added",Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(this,"Please enter a service",Toast.LENGTH_LONG).show();
-        }
-    }
-
-
-
-    //Updating a service, mostly the price
-    /**private void updateService(String sId, String serv, double price){
-
-     }**/
-    private void updateService(String sId, String serv, double price) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Services").child(sId);
-        Service service = new Service(sId, serv, price);
-        dR.setValue(service);
-        Toast.makeText(getApplicationContext(), "Services Updated", Toast.LENGTH_LONG).show();
-    }
-
-    //Delete a service
-
-    private void deleteService(String sId) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("Services").child(sId);
-        //Product product = new Product(id, name, price);
-        dR.removeValue();
-        Toast.makeText(getApplicationContext(), "Services Deleted", Toast.LENGTH_LONG).show();
-        //return true;
-    }
 
     public void addtoService(Service service,String dateStart,String dateEnd, String date) throws UnsupportedEncodingException {
         //todo: unfinished
@@ -247,11 +173,11 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         Log.d("DateInfo", dates.toString());
         String reference = "ProviderServices/"+Sha1.hash(provider.toString());
         Log.d("DateInfo", reference);
-        ProSer Proser = new ProSer(provider,service,date, dateStart,dateEnd );
-
         DatabaseReference dF = FirebaseDatabase.getInstance().getReference(reference);
         String ProviderID = dF.push().getKey();
-        dF.child(ProviderID).setValue(provider);
+        ProSer Proser = new ProSer(ProviderID,service,date, dateStart,dateEnd );
+
+        dF.child(ProviderID).setValue(Proser);
         dF.child(ProviderID).push().setValue(Proser);
 
 
