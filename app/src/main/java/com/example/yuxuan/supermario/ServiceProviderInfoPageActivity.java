@@ -54,7 +54,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
                 String nameOfCompany = editNameOfCompany.getText().toString();
                 String generalInfo = editGeneralInfo.getText().toString();
                 String licensed = editLicensed.getText().toString();
-                String id = getIntent().getExtras().getString("ID");
+                //String id = getIntent().getExtras().getString("ID");
 
                 Intent intent = new Intent(ServiceProviderInfoPageActivity.this, ServiceProviderInfoShown.class);
                 intent.putExtra("Address",address);
@@ -152,11 +152,11 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
             databaseInfo.child(id).setValue(info);
 
             //setting edittext to blank again
-            /**editAddress.setText("");
+            editAddress.setText("");
             editPhoneNum.setText("");
             editNameOfCompany.setText("");
             editGeneralInfo.setText("");
-            editLicensed.setText("");**/
+            editLicensed.setText("");
 
 
             //displaying a success toast
@@ -184,7 +184,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
 
     public void OnBackServiceProviderActivity(){
         //Toast.makeText(this,"Successfully created an Account",Toast.LENGTH_LONG).show();
-        Intent intent=new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        Intent intent=new Intent(getApplicationContext(),ServiceProviderInfoShown.class);
         startActivityForResult(intent,0);
     }
 }
