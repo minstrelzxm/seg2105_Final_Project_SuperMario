@@ -17,7 +17,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
     private Button spInfoBtn;
     private Button spAddServiceBtn;
     private Button spAvailabilitiesBtn;
-    Intent intent;
+    Intent intentss;
     String username;
     ArrayAdapter<String> adapter;
     ArrayList myList = new ArrayList();
@@ -31,9 +31,10 @@ public class ServiceProviderMainPage extends AppCompatActivity {
         spInfoBtn = (Button)findViewById(R.id.serviceProviderMainInfoBtn);
         spAddServiceBtn = (Button)findViewById(R.id.serviceProviderMainAddServiceBtn);
         spAvailabilitiesBtn = (Button)findViewById(R.id.serviceProviderMainAvailabtn);
+
         ListView timeslotlistview = (ListView) findViewById(R.id.serviceProviderTimeSlot);
 
-        intent = getIntent();
+        intentss = getIntent();
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("BUNDLE");
 
@@ -41,7 +42,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
             timeList = (ArrayList<String>) args.getSerializable("ARRAYLIST");
             day = (String)args.getSerializable("Day");
             myList.add(day);
-            myList.addAll(timeList);
+            myList.add(timeList);
 
         }
         username = intent.getStringExtra("username");
@@ -72,7 +73,6 @@ public class ServiceProviderMainPage extends AppCompatActivity {
                     android.R.layout.simple_list_item_1,
                     myList);
 //        setListAdapter(adapter);
-            System.out.println("=========" + (timeslotlistview == null));
             timeslotlistview.setAdapter(adapter);
         }
 
@@ -86,7 +86,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
 
     public void addServiceJump(){
         Intent intent = new Intent(getApplicationContext(), ServiceProviderAddServiceActivity.class);
-        intent.putExtra("username",intent.getStringExtra("username"));
+        intent.putExtra("username",intentss.getStringExtra("username"));
         startActivityForResult(intent, 0);
 
     }
