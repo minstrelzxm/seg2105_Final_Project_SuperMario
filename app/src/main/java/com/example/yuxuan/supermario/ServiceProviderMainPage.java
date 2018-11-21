@@ -23,6 +23,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
     ArrayList myList = new ArrayList();
     ArrayList<String> timeList = new ArrayList<>();
     String day;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

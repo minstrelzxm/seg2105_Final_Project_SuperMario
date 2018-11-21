@@ -152,11 +152,11 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
             databaseInfo.child(id).setValue(info);
 
             //setting edittext to blank again
-            /**editAddress.setText("");
+            editAddress.setText("");
             editPhoneNum.setText("");
             editNameOfCompany.setText("");
             editGeneralInfo.setText("");
-            editLicensed.setText("");**/
+            editLicensed.setText("");
 
 
             //displaying a success toast
