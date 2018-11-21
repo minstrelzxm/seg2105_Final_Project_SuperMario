@@ -85,8 +85,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
         ListView timeslotlistview = (ListView) findViewById(R.id.serviceProviderTimeSlot);
 
         intentss = getIntent();
-        Intent intent = getIntent();
-        Bundle args = intent.getBundleExtra("BUNDLE");
+        Bundle args = intentss.getBundleExtra("BUNDLE");
 
         if (args != null) {
             timeList = (ArrayList<String>) args.getSerializable("ARRAYLIST");
@@ -95,7 +94,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
             myList.add(timeList);
 
         }
-        username = intent.getStringExtra("username");
+        username = intentss.getStringExtra("username");
 
         spInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
