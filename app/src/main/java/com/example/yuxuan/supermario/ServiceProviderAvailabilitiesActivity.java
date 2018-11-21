@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ServiceProviderAvailabilitiesActivity extends AppCompatActivity {
@@ -58,6 +59,15 @@ public class ServiceProviderAvailabilitiesActivity extends AppCompatActivity {
         }
         final_text.setText(radioButton.getText()+ "\n" +final_time_selection);
         final_text.setEnabled(true);
+
+        Intent intent = new Intent(ServiceProviderAvailabilitiesActivity.this, ServiceProviderMainPage.class);
+        Bundle args = new Bundle();
+        args.putSerializable("ARRAYLIST",(Serializable)selection);;
+        args.putSerializable("Day",(Serializable)radioButton.getText());;
+
+        intent.putExtra("BUNDLE", args);
+
+        startActivity(intent);
     }
 
     public void selectTime(View view){
