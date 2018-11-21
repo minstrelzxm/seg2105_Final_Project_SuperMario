@@ -27,14 +27,13 @@
                 android:layout_weight="1"
                 android:text="Address" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EditAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter the address"
-                android:inputType="textPersonName"
+
                 android:text="" />
         </LinearLayout>
 
@@ -54,14 +53,13 @@
                 android:layout_weight="1"
                 android:text="Licensed" />
 
-            <EditText
+            <TextView
                 android:id="@+id/BooleanLicensed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="YES/NO"
-                android:inputType="textPersonName"
+
                 android:text="" />
         </LinearLayout>
 
@@ -81,14 +79,13 @@
                 android:layout_weight="1"
                 android:text="General Description" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EditGeneralInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter the General Description"
-                android:inputType="textPersonName"
+
                 android:text="" />
         </LinearLayout>
 
@@ -108,14 +105,13 @@
                 android:layout_weight="1"
                 android:text="Name Of Company" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EditNameOfCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter the name of Company"
-                android:inputType="textPersonName"
+
                 android:text="" />
         </LinearLayout>
 
@@ -136,14 +132,13 @@
                 android:layout_weight="1"
                 android:text="PhoneNumber" />
 
-            <EditText
+            <TextView
                 android:id="@+id/EditPhoneNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter the Phone Number"
-                android:inputType="textPersonName"
+
                 android:text="" />
         </LinearLayout>
 
@@ -157,21 +152,21 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/SaveButton"
+                android:id="@+id/ChangeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Save"
+                android:text="Change Info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
             <Button
-                android:id="@+id/DeleteButton"
+                android:id="@+id/BackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Delete"
+                android:text="Back"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />

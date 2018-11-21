@@ -35,8 +35,10 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        databaseInfo = FirebaseDatabase.getInstance().getReference("ServiceProviderInfo");
         setContentView(R.layout.activity_service_provider_info_page);
+
+        databaseInfo = FirebaseDatabase.getInstance().getReference("ServiceProviderInfo");
+
         editAddress = (EditText) findViewById(R.id.EditAddress);
         editPhoneNum = (EditText) findViewById(R.id.EditPhoneNum);
         editNameOfCompany = (EditText) findViewById(R.id.EditNameOfCompany);
@@ -44,12 +46,27 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
         editLicensed = (EditText) findViewById(R.id.BooleanLicensed);
         saveButton = (Button) findViewById(R.id.SaveButton);
 
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String address = editAddress.getText().toString();
+                String phoneNum = editPhoneNum.getText().toString();
+                String nameOfCompany = editNameOfCompany.getText().toString();
+                String generalInfo = editGeneralInfo.getText().toString();
+                String licensed = editLicensed.getText().toString();
+                //String id = getIntent().getExtras().getString("ID");
+
+                Intent intent = new Intent(ServiceProviderInfoPageActivity.this, ServiceProviderInfoShown.class);
+                intent.putExtra("Address",address);
+                intent.putExtra("Phone",phoneNum);
+                intent.putExtra("Company",nameOfCompany);
+                intent.putExtra("Info",generalInfo);
+                intent.putExtra("Licensed",licensed);
+                //intent.putExtra("ID",id);
+
                 addInfo();
                 //showUpdateDeleteDialog(id);
+                OnBackServiceProviderActivity();
             }
         });
 
@@ -86,7 +103,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
         final EditText editGeneralInfoInfo = (EditText) findViewById(R.id.EditGeneralInfo);
         final EditText editLicensedInfo = (EditText) findViewById(R.id.BooleanLicensed);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.SaveButton);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.DeleteButton);
+
 
         //dialogBuilder.setTitle(productName);
         final AlertDialog b = dialogBuilder.create();
@@ -108,13 +125,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
             }
         });
 
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                deleteInfo(productId);
-                b.dismiss();
-            }
-        });
+
     }
 
     private void addInfo() {
@@ -173,7 +184,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
 
     public void OnBackServiceProviderActivity(){
         //Toast.makeText(this,"Successfully created an Account",Toast.LENGTH_LONG).show();
-        Intent intent=new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        Intent intent=new Intent(getApplicationContext(),ServiceProviderInfoShown.class);
         startActivityForResult(intent,0);
     }
 }
