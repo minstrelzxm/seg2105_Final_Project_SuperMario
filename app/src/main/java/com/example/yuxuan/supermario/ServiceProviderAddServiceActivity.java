@@ -149,15 +149,38 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String dateService = editTextStart.getText().toString().trim();
+                String[] strings = dateService.split(":");
                 String dateEnd = editTextEnd.getText().toString().trim();
-                String date = String.valueOf(spinner.getSelectedItem());
-                if(!TextUtils.isEmpty(dateService)||!TextUtils.isEmpty(dateEnd)){
-                    try {
-                        addtoService(service1,dateService, dateEnd, date);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
+                String[] strings1 = dateEnd.split(":");
+                try{
+                    int one = Integer.parseInt(strings[0]);
+                    int two = Integer.parseInt(strings[1]);
+                    int three = Integer.parseInt(strings1[0]);
+                    int four = Integer.parseInt(strings1[1]);
+                    if(0<=one&&one<24&&0<=two&&two<60&&0<=three&&three<24&&0<=four&&four<60){
+                        if(one<three||(one==three&two<four)){
+
+                            String date = String.valueOf(spinner.getSelectedItem());
+                            if(!TextUtils.isEmpty(dateService)||!TextUtils.isEmpty(dateEnd)){
+                                try {
+                                    addtoService(service1,dateService, dateEnd, date);
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                }
+                                alert.dismiss();
+                            }
+                        }else{
+                            throw new ArrayIndexOutOfBoundsException();
+                        }
                     }
-                    alert.dismiss();
+
+                } catch (ArrayIndexOutOfBoundsException e){
+                    Toast.makeText(getApplicationContext(),"uncurrect number",Toast.LENGTH_LONG).show();
+                } catch(IndexOutOfBoundsException e){
+                    Toast.makeText(getApplicationContext(),"uncurrect format",Toast.LENGTH_LONG).show();
+                } catch (NumberFormatException e){
+                    Toast.makeText(getApplicationContext(),"uncurrect format",Toast.LENGTH_LONG).show();
+
                 }
             }
         });
