@@ -56,6 +56,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
                 String licensed = editLicensed.getText().toString();
                 //String id = getIntent().getExtras().getString("ID");
 
+                addInfo();
                 Intent intent = new Intent(ServiceProviderInfoPageActivity.this, ServiceProviderInfoShown.class);
                 intent.putExtra("Address",address);
                 intent.putExtra("Phone",phoneNum);
@@ -64,9 +65,9 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
                 intent.putExtra("Licensed",licensed);
                 //intent.putExtra("ID",id);
 
-                addInfo();
+
                 //showUpdateDeleteDialog(id);
-                OnBackServiceProviderActivity();
+                startActivity(intent);
             }
         });
 
