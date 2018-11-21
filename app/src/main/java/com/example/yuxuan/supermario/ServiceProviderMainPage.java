@@ -17,7 +17,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
     private Button spInfoBtn;
     private Button spAddServiceBtn;
     private Button spAvailabilitiesBtn;
-    Intent intentss;
+    Intent intent;
     String username;
     ArrayAdapter<String> adapter;
     ArrayList myList = new ArrayList();
@@ -33,7 +33,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
         spAvailabilitiesBtn = (Button)findViewById(R.id.serviceProviderMainAvailabtn);
         ListView timeslotlistview = (ListView) findViewById(R.id.serviceProviderTimeSlot);
 
-        intentss = getIntent();
+        intent = getIntent();
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("BUNDLE");
 
@@ -86,7 +86,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
 
     public void addServiceJump(){
         Intent intent = new Intent(getApplicationContext(), ServiceProviderAddServiceActivity.class);
-        intent.putExtra("username",intentss.getStringExtra("username"));
+        intent.putExtra("username",intent.getStringExtra("username"));
         startActivityForResult(intent, 0);
 
     }
