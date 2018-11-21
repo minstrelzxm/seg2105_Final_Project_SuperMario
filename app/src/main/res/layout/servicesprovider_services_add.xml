@@ -61,13 +61,13 @@
             <Spinner
                 android:id="@+id/spinner_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/editTextStart"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Enter Service Start"
@@ -75,8 +75,8 @@
 
             <EditText
                 android:id="@+id/editTextEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="Enter Service End"
