@@ -31,7 +31,7 @@
         <activity android:name=".service_provider_updated_infopage" />
         <activity android:name=".ServiceProviderInfoShown" />
         <activity android:name=".CalenderActivity" />
-        <activity android:name=".HomeOwnerMainPageActivity"></activity>
+        <activity android:name=".HomeOwnerMainPageActivity" />
     </application>
 
 </manifest>

@@ -67,6 +67,12 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                 serviceProviderJump();
             }
         });
+        welcomeOwnerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeOwnerJump();
+            }
+        });
 
 
 //        if(roleName =="administrator"){
@@ -97,6 +103,11 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     public void serviceProviderJump(){
         Intent intent = new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+        intent.putExtra("username",intentss.getStringExtra("username"));
+        startActivityForResult(intent,0);
+    }
+    public void homeOwnerJump(){
+        Intent intent = new Intent(getApplicationContext(),HomeOwnerMainPageActivity.class);
         intent.putExtra("username",intentss.getStringExtra("username"));
         startActivityForResult(intent,0);
     }
