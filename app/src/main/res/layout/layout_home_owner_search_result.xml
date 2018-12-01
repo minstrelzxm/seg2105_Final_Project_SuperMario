@@ -12,7 +12,7 @@
         android:text="Name" />
 
     <EditText
-        android:id="@+id/homeOwnerSearchResultTime"
+        android:id="@+id/homeOwnerSearchResultRate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/homeOwnerSearchResultName"

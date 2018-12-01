@@ -19,7 +19,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_owner_main_page);
 
         mSearchField = (EditText)findViewById(R.id.homeOwnerMainSearchField);
-        mSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchBtn);
+        mSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTypeBtn);
         mResultView = (RecyclerView) findViewById(R.id.homeOwnerMainResultList);
     }
 }
