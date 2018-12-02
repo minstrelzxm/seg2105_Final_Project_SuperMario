@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/homeOwnerBookBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book this Service"
+            tools:layout_editor_absoluteX="25dp"
+            tools:layout_editor_absoluteY="209dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/homeOwnerRateEditText"
+                android:layout_width="248dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="70dp" />
+
+            <Button
+                android:id="@+id/howmeOwnerRateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="rate"
+                tools:layout_editor_absoluteX="280dp"
+                tools:layout_editor_absoluteY="199dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
