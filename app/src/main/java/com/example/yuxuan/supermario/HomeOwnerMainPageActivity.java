@@ -66,7 +66,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Add an judgment
                 //String provider = mSearchField.getText().toString();
-                String provider = "aa@a.a";
+                String provider = mSearchField.getText().toString();
                 //
                 String reference = null;
                 try {
