@@ -201,7 +201,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         ProSer Proser = new ProSer(ProviderID,service,date, dateStart,dateEnd );
 
         dF.child(ProviderID).setValue(Proser);
-        dF.child(ProviderID).push().setValue(Proser);
+        //dF.child(ProviderID).push().setValue(Proser);
 
 
 

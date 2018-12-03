@@ -59,6 +59,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
         String reference = null;
         try {
             reference = "ProviderServices/"+Sha1.hash(provider.toString());
+            Log.d("ProviderServices", reference);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -217,7 +218,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
             public void onClick(View view) {
                 String StartTime = editTextStart.getText().toString().trim();
                 String EndTime = editTextEnd.getText().toString().trim();
-                String dateService = editTextStart.getText().toString().trim();
+                String dateService = String.valueOf(spinner.getSelectedItem());
                 if(!TextUtils.isEmpty(StartTime)){
                     updateService(sId,dateService,StartTime,EndTime);
                     alert.dismiss();
