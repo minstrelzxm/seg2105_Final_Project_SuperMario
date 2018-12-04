@@ -39,7 +39,6 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
     private Button Search;
     private Button TSearchBtn;
     ListView listViewServices;
-    private RecyclerView mResultView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,6 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         mSearchField = (EditText)findViewById(R.id.homeOwnerMainSearchField);
         mSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTypeBtn);
         TSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTimeBtn);
-        mResultView = (RecyclerView) findViewById(R.id.homeOwnerMainResultList);
         Search = (Button) findViewById(R.id.button3);
         TSearchBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -69,12 +67,8 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                 String provider = mSearchField.getText().toString();
                 //
                 String reference = null;
-                try {
-                    reference = "ProviderServices/"+Sha1.hash(provider);
-                    Log.d("ProviderServices", reference);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+                reference = "ProviderServices/";
+                Log.d("ProviderServices", reference);
                 databaseProvideService = FirebaseDatabase.getInstance().getReference(reference);
                 services = new ArrayList<>();
                 databaseProvideService.addValueEventListener(new ValueEventListener() {
@@ -82,20 +76,26 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         services.clear();
                         //update every Service Snapshot
-                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            String date =snapshot.child("date").getValue(String.class);
-                            String endTime =snapshot.child("endTime").getValue(String.class);
-                            String startTime =snapshot.child("startTime").getValue(String.class);
-                            String proID =snapshot.child("proID").getValue(String.class);
+                        for(DataSnapshot snapshot2 : dataSnapshot.getChildren()){
+                            Log.d("ProviderServices", snapshot2.toString());
+                            for(DataSnapshot snapshot : snapshot2.getChildren()){
+                                Log.d("ProviderServices_listprovider", snapshot.toString());
 
-                            String serviceId =snapshot.child("serID").child("serviceId").getValue(String.class);
-                            String typeOfService =snapshot.child("serID").child("typeOfService").getValue(String.class);
-                            Double hourRate =snapshot.child("serID").child("hourRate").getValue(Double.class);
-                            Service servicess = new Service(serviceId,typeOfService,hourRate);
-                            Log.d("DateInfo", snapshot.toString());
+                                String date =snapshot.child("date").getValue(String.class);
+                                String endTime =snapshot.child("endTime").getValue(String.class);
+                                String startTime =snapshot.child("startTime").getValue(String.class);
+                                String proID =snapshot.child("proID").getValue(String.class);
 
-                            ProSer service = new ProSer(proID,servicess,date,startTime,endTime);
-                            services.add(service);
+                                String serviceId =snapshot.child("serID").child("serviceId").getValue(String.class);
+                                String typeOfService =snapshot.child("serID").child("typeOfService").getValue(String.class);
+                                Double hourRate =snapshot.child("serID").child("hourRate").getValue(Double.class);
+                                Service servicess = new Service(serviceId,typeOfService,hourRate);
+                                Log.d("DateInfo", snapshot.toString());
+
+                                ProSer service = new ProSer(proID,servicess,date,startTime,endTime);
+                                services.add(service);
+                            }
+
                         }
                         ProSerList servicesAdapter = new ProSerList(HomeOwnerMainPageActivity.this, services);
                         listViewServices.setAdapter(servicesAdapter);

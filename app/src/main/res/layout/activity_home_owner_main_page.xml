@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/homeOwnerMainSearchTextView"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Search Here"
         android:inputType="textPersonName"
@@ -34,6 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/homeOwnerMainSearchByTypeBtn"
         android:layout_alignStart="@+id/homeOwnerMainSearchTextView"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
         android:text="Button" />
 
     <Button
@@ -64,20 +66,14 @@
         android:layout_marginTop="73dp"
         android:text="RateSearch" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/homeOwnerMainResultList"
-        android:layout_width="match_parent"
-        android:layout_height="351dp"
-        android:layout_below="@+id/homeOwnerMainSearchField"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="81dp"></android.support.v7.widget.RecyclerView>
-
     <ListView
         android:id="@+id/listviewLis"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignEnd="@+id/homeOwnerMainSearchField"
+        android:layout_height="350dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="161dp" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp" />
 </RelativeLayout>

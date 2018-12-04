@@ -56,6 +56,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         databaseProviderService = FirebaseDatabase.getInstance().getReference("ProviderServices");
         listViewServices = (ListView)findViewById(R.id.listViewServices);
         intentss = getIntent();
+        Log.d("intens", intentss.getStringExtra("username"));
 
         services = new ArrayList<>();
 
@@ -198,7 +199,7 @@ public class ServiceProviderAddServiceActivity extends AppCompatActivity {
         Log.d("DateInfo", reference);
         DatabaseReference dF = FirebaseDatabase.getInstance().getReference(reference);
         String ProviderID = dF.push().getKey();
-        ProSer Proser = new ProSer(ProviderID,service,date, dateStart,dateEnd );
+        ProSer Proser = new ProSer(provider,service,date, dateStart,dateEnd );
 
         dF.child(ProviderID).setValue(Proser);
         //dF.child(ProviderID).push().setValue(Proser);

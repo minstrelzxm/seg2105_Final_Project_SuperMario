@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_info_page);
 
+
         databaseInfo = FirebaseDatabase.getInstance().getReference("ServiceProviderInfo");
 
         editAddress = (EditText) findViewById(R.id.EditAddress);
@@ -55,9 +57,12 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
                 String generalInfo = editGeneralInfo.getText().toString();
                 String licensed = editLicensed.getText().toString();
                 //String id = getIntent().getExtras().getString("ID");
+                String usernames = getIntent().getStringExtra("username");
+                Log.d("intens", usernames);
 
                 addInfo();
                 Intent intent = new Intent(ServiceProviderInfoPageActivity.this, ServiceProviderInfoShown.class);
+                intent.putExtra("username",usernames);
                 intent.putExtra("Address",address);
                 intent.putExtra("Phone",phoneNum);
                 intent.putExtra("Company",nameOfCompany);

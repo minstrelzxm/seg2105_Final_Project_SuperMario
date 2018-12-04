@@ -40,22 +40,23 @@ public class ServiceProviderMainPage extends AppCompatActivity {
     private Button spAvailabilitiesBtn;
     DatabaseReference databaseProviderService;
     ListView listViewServices;
-    Intent intentss;
     String username;
     List<ProSer> services;
     ArrayAdapter<String> adapter;
     ArrayList myList = new ArrayList();
     ArrayList<String> timeList = new ArrayList<>();
     String day;
+    Intent intens;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_provider_main_page);
-        intentss = getIntent();
-        Intent intent = getIntent();
-        username = intent.getStringExtra("username");
-        String provider = intentss.getStringExtra("username");
+        intens = getIntent();
+        username = intens.getStringExtra("username");
+        Log.d("intens", intens.getStringExtra("username"));
+        String provider = intens.getStringExtra("username");
         String reference = null;
         try {
             reference = "ProviderServices/"+Sha1.hash(provider.toString());
@@ -85,8 +86,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
 
         ListView timeslotlistview = (ListView) findViewById(R.id.serviceProviderTimeSlot);
 
-        intentss = getIntent();
-        Bundle args = intentss.getBundleExtra("BUNDLE");
+        Bundle args = intens.getBundleExtra("BUNDLE");
 
         if (args != null) {
             timeList = (ArrayList<String>) args.getSerializable("ARRAYLIST");
@@ -95,7 +95,7 @@ public class ServiceProviderMainPage extends AppCompatActivity {
             myList.add(timeList);
 
         }
-        username = intentss.getStringExtra("username");
+        username = intens.getStringExtra("username");
 
         spInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,15 +166,14 @@ public class ServiceProviderMainPage extends AppCompatActivity {
 
     public void infoJump(){
         Intent intent = new Intent(getApplicationContext(), ServiceProviderInfoPageActivity.class);
+        intent.putExtra("username",intens.getStringExtra("username"));
         startActivityForResult(intent, 0);
-
     }
 
     public void addServiceJump(){
         Intent intent = new Intent(getApplicationContext(), ServiceProviderAddServiceActivity.class);
-        intent.putExtra("username",intentss.getStringExtra("username"));
+        intent.putExtra("username",intens.getStringExtra("username"));
         startActivityForResult(intent, 0);
-
     }
 
     public void availJump(){

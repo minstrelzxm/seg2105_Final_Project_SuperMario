@@ -91,7 +91,10 @@ public class ServiceProviderInfoShown extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String username = getIntent().getStringExtra("username");
+                Log.d("intens", username);
                 Intent intent=new Intent(getApplicationContext(),ServiceProviderMainPage.class);
+                intent.putExtra("username",username);
                 startActivityForResult(intent,0);
             }
         });

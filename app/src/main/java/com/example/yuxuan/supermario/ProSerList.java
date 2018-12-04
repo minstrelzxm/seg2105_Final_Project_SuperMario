@@ -28,8 +28,10 @@ public class ProSerList extends ArrayAdapter<ProSer> {
         TextView textViewHourRate = (TextView) listViewItem.findViewById(R.id.textViewDate);
 
         ProSer service = services.get(position);
+        String Provi = service.getProID();
+        textViewService.setText(Provi);
         Service service1 = service.getSerID();
-        String Serviceas = "Services Name: "+service1.getTypeOfService()+".\n Hour Rate: "+service1.getHourRate();
+        String Serviceas = service.getProID()+"\nServices Name: "+service1.getTypeOfService()+".\n Hour Rate: "+service1.getHourRate();
         textViewService.setText(Serviceas);
         String Date = "Date: "+service.getDate()+": From "+service.getStartTime()+" to "+service.getEndTime();
         textViewHourRate.setText(Date);
