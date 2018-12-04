@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class HomeOwnerMainPageActivity extends AppCompatActivity {
 
@@ -50,6 +51,18 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         mSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTypeBtn);
         TSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTimeBtn);
         Search = (Button) findViewById(R.id.button3);
+
+        mSearchBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String Service_name = mSearchField.getText().toString();
+                TypeSear(Service_name);
+            }
+        }
+
+        );
+
         TSearchBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -79,7 +92,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                         for(DataSnapshot snapshot2 : dataSnapshot.getChildren()){
                             Log.d("ProviderServices", snapshot2.toString());
                             for(DataSnapshot snapshot : snapshot2.getChildren()){
-                                Log.d("ProviderServices_listprovider", snapshot.toString());
+                                Log.d("ProviderServices", snapshot.toString());
 
                                 String date =snapshot.child("date").getValue(String.class);
                                 String endTime =snapshot.child("endTime").getValue(String.class);
@@ -164,7 +177,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
     }
 
     public void updateService(String date, String start, String end){
-        List<ProSer> newDate = new ArrayList<>();;
+        List<ProSer> newDate = new ArrayList<>();
         String[] starts = start.split(":");
         String[] ends = end.split(":");
         Log.d("updateService", services.toString());
@@ -183,6 +196,21 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                                 newDate.add(services.get(i));
                         }
                 }
+            }
+
+        }
+        ProSerList servicesAdapter = new ProSerList(HomeOwnerMainPageActivity.this, newDate);
+        Log.d("updateService", newDate.size()+newDate.toString());
+
+        listViewServices.setAdapter(servicesAdapter);
+
+    }
+    public void TypeSear(String Service_name){
+        List<ProSer> newDate = new ArrayList<>();
+        for(int i=0;i<services.size();i++){
+            Service service= services.get(i).getSerID();
+            if(service.getTypeOfService().indexOf(Service_name)!=-1){
+                newDate.add(services.get(i));
             }
 
         }

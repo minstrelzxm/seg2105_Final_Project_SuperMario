@@ -69,8 +69,6 @@ public class ServiceProviderInfoPageActivity extends AppCompatActivity {
                 intent.putExtra("Info",generalInfo);
                 intent.putExtra("Licensed",licensed);
                 //intent.putExtra("ID",id);
-
-
                 //showUpdateDeleteDialog(id);
                 startActivity(intent);
             }
