@@ -1,5 +1,6 @@
 package com.example.yuxuan.supermario;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,12 +42,32 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
     private Button Search;
     private Button TSearchBtn;
     ListView listViewServices;
+    DatabaseReference databaseProviderService;
+    String username;
+    ArrayList myList = new ArrayList();
+    ArrayList<String> timeList = new ArrayList<>();
+    Intent intens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_owner_main_page);
+        intens = getIntent();
+
         listViewServices = (ListView)findViewById(R.id.listviewLis);
+        listViewServices.setAdapter(adapter);
+
+        //adding an onItemLongClickListener to the item in the item view list
+        listViewServices.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ProSer service = services.get(position);
+                ratingDialog(service);
+
+                return true;
+            }
+        });
+
 
         mSearchField = (EditText)findViewById(R.id.homeOwnerMainSearchField);
         mSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTypeBtn);
@@ -123,18 +145,48 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
 
 
             }
+
         });
 
-        listViewServices.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+
+
+
+    }
+    //ratingDialog method
+    private void ratingDialog(ProSer service) {
+        final Service service1 = service.getSerID();
+        final String sId = service.getProID();
+        String serv = service1.getTypeOfService();
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.home_owner_rate_book,null);
+        dialogBuilder.setView(dialogView);
+
+
+        final Button homeOwnerBookBtn = (Button) dialogView.findViewById(R.id.homeOwnerBookBtn);
+        final Button homeOwnerRateBtn = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
+
+        final RatingBar ratingRatingBar = (RatingBar) dialogView.findViewById(R.id.ratingBar);
+        Button RateButton = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
+        final TextView rateingDisplayTextview = (TextView) dialogView.findViewById(R.id.textViewRateValue);
+
+        RateButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                ProSer service = services.get(position);
-                showUpdateDeleteDialog(service);
-                return true;
+            public void onClick(View view){
+                rateingDisplayTextview.setText("Your rating is: "+ ratingRatingBar.getRating());
             }
         });
-    }
 
+        dialogBuilder.setTitle(serv);
+        final AlertDialog alert = dialogBuilder.create();
+        alert.show();
+
+
+
+
+
+    }
 
 
     //showing the service is updated or deleted
@@ -220,5 +272,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         listViewServices.setAdapter(servicesAdapter);
 
     }
+
+
 
 }

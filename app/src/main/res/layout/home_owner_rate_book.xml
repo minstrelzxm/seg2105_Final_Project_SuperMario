@@ -18,29 +18,35 @@
             tools:layout_editor_absoluteX="25dp"
             tools:layout_editor_absoluteY="209dp" />
 
+        <TextView
+            android:id="@+id/textViewRateValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your rating will appear here"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/homeOwnerRateEditText"
-                android:layout_width="248dp"
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Name"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="70dp" />
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="1" />
 
             <Button
-                android:id="@+id/howmeOwnerRateBtn"
-                android:layout_width="match_parent"
+                android:id="@+id/homeOwnerRateBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="rate"
                 tools:layout_editor_absoluteX="280dp"
                 tools:layout_editor_absoluteY="199dp" />
         </LinearLayout>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

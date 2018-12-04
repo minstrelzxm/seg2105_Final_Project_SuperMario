@@ -36,7 +36,7 @@
         android:layout_alignStart="@+id/homeOwnerMainSearchTextView"
         android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
-        android:text="Button" />
+        android:text="ListAll" />
 
     <Button
         android:id="@+id/homeOwnerMainSearchByTypeBtn"

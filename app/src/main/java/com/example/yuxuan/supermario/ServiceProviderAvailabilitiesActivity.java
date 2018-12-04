@@ -141,7 +141,7 @@ public class ServiceProviderAvailabilitiesActivity extends AppCompatActivity {
 
         radioButton=findViewById(radioId);
 
-        Toast.makeText(this, "Selected Raido Button"+radioButton.getText(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Selected Radio Button"+radioButton.getText(),Toast.LENGTH_SHORT).show();
 
     }
 

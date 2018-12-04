@@ -144,6 +144,8 @@ public class ServiceProviderMainPage extends AppCompatActivity {
                     String startTime =snapshot.child("startTime").getValue(String.class);
                     String proID =snapshot.child("proID").getValue(String.class);
 
+//                    String rateID= snapshot.child("Rate").getValue(String.class);
+
                     String serviceId =snapshot.child("serID").child("serviceId").getValue(String.class);
                     String typeOfService =snapshot.child("serID").child("typeOfService").getValue(String.class);
                     Double hourRate =snapshot.child("serID").child("hourRate").getValue(Double.class);

@@ -7,6 +7,7 @@ public class ServiceProvider {
     private String companyName;
     private String generalDescription;
     private String licensed;
+    private float rating;
 
 
 
@@ -16,6 +17,7 @@ public class ServiceProvider {
         this.companyName = companyName;
         this.generalDescription = "";
         this.licensed = "NO";
+        this.rating = (float) 0.00;
     }
 
     public ServiceProvider(String address,String phoneNumber,String companyName,String generalDescription){
@@ -24,6 +26,7 @@ public class ServiceProvider {
         this.companyName = companyName;
         this.generalDescription = generalDescription;
         this.licensed = "NO";
+        this.rating = (float) 0.00;
     }
 
     public ServiceProvider(String address,String phoneNumber,String companyName,String generalDescription,String licensed){
@@ -32,6 +35,16 @@ public class ServiceProvider {
         this.companyName = companyName;
         this.generalDescription = generalDescription;
         this.licensed = licensed;
+        this.rating = (float) 0.00;
+    }
+
+    public ServiceProvider(String address, String phoneNumber, String companyName, String generalDescription, String licensed, float rating){
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.companyName = companyName;
+        this.generalDescription = generalDescription;
+        this.licensed = licensed;
+        this.rating = rating;
     }
 
     public void setGeneralDescription(String generalDescription){
