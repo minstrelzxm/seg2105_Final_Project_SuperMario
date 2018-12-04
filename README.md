@@ -24,3 +24,8 @@ The procedure of this deliverable is:
 8. done. (The unit test is included)
 
 https://github.com/minstrelzxm/seg2105_Final_Project_SuperMario.git
+
+Build Status
+[![Build
+Status](https://circleci.com/gh/DDDennnisss/seg2105_Final_Project_SuperMario.png?branch=master)](https://circle
+ci.com/gh/DDDennnisss/seg2105_Final_Project_SuperMario)
