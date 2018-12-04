@@ -27,4 +27,4 @@ https://github.com/minstrelzxm/seg2105_Final_Project_SuperMario.git
 
 
 Build Status
-[![Build Status](https://circleci.com/gh/seg2105_Final_Project_SuperMario.png?branch=master)](https://circleci.com/gh/seg2105_Final_Project_SuperMario)
+[![Build Status](https://circleci.com/gh/DDDennnisss/seg2105_Final_Project_SuperMario/7.png?branch=master)](https://circleci.com/gh/DDDennnisss/seg2105_Final_Project_SuperMario/7)
