@@ -25,6 +25,7 @@ The procedure of this deliverable is:
 
 https://github.com/minstrelzxm/seg2105_Final_Project_SuperMario.git
 
-
 Build Status
-[![Build Status](https://circleci.com/gh/seg2105_Final_Project_SuperMario.png?branch=master)](https://circleci.com/gh/seg2105_Final_Project_SuperMario)
+[![Build
+Status](https://circleci.com/gh/SEG2105F18/ProductCatalog.png?branch=master)](https://circle
+ci.com/gh/SEG2105F18/ProductCatalog)
