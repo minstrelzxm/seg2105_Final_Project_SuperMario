@@ -1,6 +1,7 @@
 package com.example.yuxuan.supermario;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -230,7 +232,8 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
             final Button homeOwnerBookBtn = (Button) dialogView.findViewById(R.id.homeOwnerBookBtn);
             final Button homeOwnerRateBtn = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
             Button RateButton = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
-            final TextView rateingDisplayTextview = (TextView) dialogView.findViewById(R.id.textViewRateValue);
+        final TextView rateingDisplayTextview = (TextView) dialogView.findViewById(R.id.textViewRateValue);
+        Button BookButton = (Button) dialogView.findViewById(R.id.homeOwnerBookBtn);
         display.setText(ratesss.toString());
         Log.d("DateInfo", rate.toString());
 
@@ -247,11 +250,16 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                     rateingDisplayTextview.setText("Your rating is: "+ ratingRatingBar.getRating());
                 }
             });
+        BookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeOwnerMainPageActivity.this, "Service booked!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-            dialogBuilder.setTitle(serv);
-            final AlertDialog alert = dialogBuilder.create();
-            alert.show();
-
+        dialogBuilder.setTitle(serv);
+        final AlertDialog alert = dialogBuilder.create();
+        alert.show();
 
     }
 
