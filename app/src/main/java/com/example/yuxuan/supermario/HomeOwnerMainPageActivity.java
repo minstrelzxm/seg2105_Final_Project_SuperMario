@@ -1,5 +1,6 @@
 package com.example.yuxuan.supermario;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
@@ -256,6 +257,13 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomeOwnerMainPageActivity.this, "Service booked!", Toast.LENGTH_SHORT).show();
+                BookJump();
+
+            }
+
+            private void BookJump() {
+                Intent intent = new Intent(getApplicationContext(),HomeOwnerBookedPageActivity.class);
+                startActivityForResult(intent,0);
             }
         });
 
@@ -354,6 +362,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         databaseProviderService = FirebaseDatabase.getInstance().getReference("rate");
         databaseProviderService.addValueEventListener(new ValueEventListener() {
 
+            @SuppressLint("LongLogTag")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<ProSer> newDate = new ArrayList<>();
