@@ -23,6 +23,11 @@ The procedure of this deliverable is:
 7. press Avilibilities (the right one) to enter the time schedule and enter time with checkbox.
 8. done. (The unit test is included)
 
+delieverable 4:
+We used firebase as the database in delieverable 4.
+The password is encrypted as marking schema asked in the login system.
+The final report is included inside the Git.
+
 https://github.com/minstrelzxm/seg2105_Final_Project_SuperMario.git
 
 Build Status
