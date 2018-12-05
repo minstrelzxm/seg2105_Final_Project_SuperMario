@@ -143,7 +143,9 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                                           @Override
                                           public void onClick(View v) {
                                               String Service_name = mSearchField.getText().toString();
-                                              Rate(Double.parseDouble(Service_name));
+
+                                              String[] strings = Service_name.split("-");
+                                              Rate(Double.parseDouble(strings[0]),Double.parseDouble(strings[1]));
                                           }
                                       }
 
@@ -348,7 +350,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
 
     }
 
-    public void Rate(final double getrates){
+    public void Rate(final double getrates, final double endrate){
         databaseProviderService = FirebaseDatabase.getInstance().getReference("rate");
         databaseProviderService.addValueEventListener(new ValueEventListener() {
 
@@ -366,7 +368,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                             double rate = snapshot2.child("rate").child("rate").getValue(double.class);
                             int man = snapshot2.child("rate").child("man").getValue(int.class);
                             double c = rate/man;
-                            if(getrates-0.5<c&&c<getrates+0.5){
+                            if(getrates<c&&c<endrate){
                                 newDate.add(services.get(i));
                                 newrate.add( String.valueOf(c));
 
