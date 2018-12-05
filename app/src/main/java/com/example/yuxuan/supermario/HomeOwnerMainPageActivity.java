@@ -1,6 +1,7 @@
 package com.example.yuxuan.supermario;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -169,12 +170,22 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
 
         final RatingBar ratingRatingBar = (RatingBar) dialogView.findViewById(R.id.ratingBar);
         Button RateButton = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
+
         final TextView rateingDisplayTextview = (TextView) dialogView.findViewById(R.id.textViewRateValue);
+
+        Button BookButton = (Button) dialogView.findViewById(R.id.homeOwnerBookBtn);
 
         RateButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 rateingDisplayTextview.setText("Your rating is: "+ ratingRatingBar.getRating());
+            }
+        });
+
+        BookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeOwnerMainPageActivity.this, "Service booked!", Toast.LENGTH_SHORT).show();
             }
         });
 

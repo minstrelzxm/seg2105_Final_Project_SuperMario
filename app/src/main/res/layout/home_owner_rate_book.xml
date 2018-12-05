@@ -27,7 +27,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <RatingBar
@@ -45,6 +45,21 @@
                 android:text="rate"
                 tools:layout_editor_absoluteX="280dp"
                 tools:layout_editor_absoluteY="199dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/Comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Write your comments here" />
         </LinearLayout>
 
     </LinearLayout>
