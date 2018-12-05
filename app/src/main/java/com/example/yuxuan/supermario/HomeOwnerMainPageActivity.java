@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,13 +27,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
+
+import static java.lang.Thread.sleep;
 
 public class HomeOwnerMainPageActivity extends AppCompatActivity {
 
     List<ProSer> services;
     ArrayAdapter<String> adapter;
     DatabaseReference databaseProvideService;
+    DatabaseReference databaseRatee;
+    rate ratesss;
 
     private EditText mSearchField;
     private Button mSearchBtn;
@@ -44,6 +45,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
     ListView listViewServices;
     DatabaseReference databaseProviderService;
     String username;
+    ArrayList Lrate = new ArrayList();
     ArrayList myList = new ArrayList();
     ArrayList<String> timeList = new ArrayList<>();
     Intent intens;
@@ -62,8 +64,54 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 ProSer service = services.get(position);
-                ratingDialog(service);
+                try {
+                    databaseRatee = FirebaseDatabase.getInstance().getReference("rate/"+Sha1.hash(service.getProID().toString()));
+                    final rate[] rate1 = new rate[1];
+                    ratesss = new rate(5,1);;
+                    databaseRatee.addValueEventListener(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                                double rate;
+                                                                if(dataSnapshot.child("rate").child("rate").getValue(double.class)!=null){
+                                                                    rate = dataSnapshot.child("rate").child("rate").getValue(double.class);
+                                                                    Log.d("raterate", String.valueOf(rate));
+                                                                    int man = dataSnapshot.child("rate").child("man").getValue(int.class);
+                                                                    Log.d("rateman", String.valueOf(man));
+                                                                    rate1[0] = new rate(rate,man);
+                                                                    ratesss = new rate(rate,man);
+                                                                    Log.d("ratesss4", ratesss.toString());
 
+                                                                } else{
+                                                                    ratesss = new rate(5,1);
+                                                                }
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(DatabaseError databaseError) {
+                                                                databaseRatee.child("rate").child("rate").setValue(5);
+                                                                databaseRatee.child("rate").child("man").setValue(5);
+
+                                                            }
+
+
+                                                        }
+                    );
+                    Log.d("ratesss1", ratesss.toString());
+                    databaseRatee.child("value").setValue("1");
+                    try {
+                        sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if(rate1[0]==null){
+                        rate1[0] = new rate(5,1);
+                    }
+                    Log.d("ratesss2", ratesss.toString());
+                    ratingDialog(service, rate1[0]);
+
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 return true;
             }
         });
@@ -111,23 +159,23 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         services.clear();
                         //update every Service Snapshot
-                        for(DataSnapshot snapshot2 : dataSnapshot.getChildren()){
+                        for (DataSnapshot snapshot2 : dataSnapshot.getChildren()) {
                             Log.d("ProviderServices", snapshot2.toString());
-                            for(DataSnapshot snapshot : snapshot2.getChildren()){
+                            for (DataSnapshot snapshot : snapshot2.getChildren()) {
                                 Log.d("ProviderServices", snapshot.toString());
 
-                                String date =snapshot.child("date").getValue(String.class);
-                                String endTime =snapshot.child("endTime").getValue(String.class);
-                                String startTime =snapshot.child("startTime").getValue(String.class);
-                                String proID =snapshot.child("proID").getValue(String.class);
+                                String date = snapshot.child("date").getValue(String.class);
+                                String endTime = snapshot.child("endTime").getValue(String.class);
+                                String startTime = snapshot.child("startTime").getValue(String.class);
+                                String proID = snapshot.child("proID").getValue(String.class);
 
-                                String serviceId =snapshot.child("serID").child("serviceId").getValue(String.class);
-                                String typeOfService =snapshot.child("serID").child("typeOfService").getValue(String.class);
-                                Double hourRate =snapshot.child("serID").child("hourRate").getValue(Double.class);
-                                Service servicess = new Service(serviceId,typeOfService,hourRate);
+                                String serviceId = snapshot.child("serID").child("serviceId").getValue(String.class);
+                                String typeOfService = snapshot.child("serID").child("typeOfService").getValue(String.class);
+                                Double hourRate = snapshot.child("serID").child("hourRate").getValue(Double.class);
+                                Service servicess = new Service(serviceId, typeOfService, hourRate);
                                 Log.d("DateInfo", snapshot.toString());
 
-                                ProSer service = new ProSer(proID,servicess,date,startTime,endTime);
+                                ProSer service = new ProSer(proID, servicess, date, startTime, endTime);
                                 services.add(service);
                             }
 
@@ -142,8 +190,6 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                     }
 
                 });
-
-
             }
 
         });
@@ -154,7 +200,9 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
 
     }
     //ratingDialog method
-    private void ratingDialog(ProSer service) {
+    private void ratingDialog(ProSer service, final rate rate) {
+
+        Log.d("ratesss3", ratesss.toString());
         final Service service1 = service.getSerID();
         final String sId = service.getProID();
         String serv = service1.getTypeOfService();
@@ -162,28 +210,31 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.home_owner_rate_book,null);
         dialogBuilder.setView(dialogView);
-
-
-        final Button homeOwnerBookBtn = (Button) dialogView.findViewById(R.id.homeOwnerBookBtn);
-        final Button homeOwnerRateBtn = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
-
+        final TextView display = (TextView) dialogView.findViewById(R.id.textView14);
         final RatingBar ratingRatingBar = (RatingBar) dialogView.findViewById(R.id.ratingBar);
-        Button RateButton = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
-        final TextView rateingDisplayTextview = (TextView) dialogView.findViewById(R.id.textViewRateValue);
+            final Button homeOwnerBookBtn = (Button) dialogView.findViewById(R.id.homeOwnerBookBtn);
+            final Button homeOwnerRateBtn = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
+            Button RateButton = (Button) dialogView.findViewById(R.id.homeOwnerRateBtn);
+            final TextView rateingDisplayTextview = (TextView) dialogView.findViewById(R.id.textViewRateValue);
+        display.setText(ratesss.toString());
+        Log.d("DateInfo", rate.toString());
 
-        RateButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                rateingDisplayTextview.setText("Your rating is: "+ ratingRatingBar.getRating());
-            }
-        });
+            RateButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    Log.d("ratesss5", ratesss.toString());
+                    ratesss.setRate(ratesss.getRate()+ratingRatingBar.getRating());
+                    ratesss.setMan(ratesss.getMan()+1);
+                    display.setText(ratesss.toString());
 
-        dialogBuilder.setTitle(serv);
-        final AlertDialog alert = dialogBuilder.create();
-        alert.show();
+                    databaseRatee.child("rate").setValue(ratesss);
+                    rateingDisplayTextview.setText("Your rating is: "+ ratingRatingBar.getRating());
+                }
+            });
 
-
-
+            dialogBuilder.setTitle(serv);
+            final AlertDialog alert = dialogBuilder.create();
+            alert.show();
 
 
     }
