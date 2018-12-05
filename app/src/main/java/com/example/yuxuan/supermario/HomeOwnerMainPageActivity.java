@@ -42,6 +42,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
     private Button mSearchBtn;
     private Button Search;
     private Button TSearchBtn;
+    Button Rbutton;
     ListView listViewServices;
     DatabaseReference databaseProviderService;
     String username;
@@ -97,7 +98,8 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                                                         }
                     );
                     Log.d("ratesss1", ratesss.toString());
-                    databaseRatee.child("value").setValue("1");
+                    //databaseRatee.child("value").setValue("1");
+                    //databaseRatee.child("value").removeValue();
                     try {
                         sleep(100);
                     } catch (InterruptedException e) {
@@ -120,6 +122,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         mSearchField = (EditText)findViewById(R.id.homeOwnerMainSearchField);
         mSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTypeBtn);
         TSearchBtn = (Button) findViewById(R.id.homeOwnerMainSearchByTimeBtn);
+        Rbutton = (Button) findViewById(R.id.homeOwnerMainSearchByRateBtn);
         Search = (Button) findViewById(R.id.button3);
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +133,17 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                 TypeSear(Service_name);
             }
         }
+
+        );
+
+        Rbutton.setOnClickListener(new View.OnClickListener() {
+
+                                          @Override
+                                          public void onClick(View v) {
+                                              String Service_name = mSearchField.getText().toString();
+                                              Rate(Double.parseDouble(Service_name));
+                                          }
+                                      }
 
         );
 
@@ -201,6 +215,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
     }
     //ratingDialog method
     private void ratingDialog(ProSer service, final rate rate) {
+        final String ids = service.getProID();
 
         Log.d("ratesss3", ratesss.toString());
         final Service service1 = service.getSerID();
@@ -225,6 +240,7 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
                     Log.d("ratesss5", ratesss.toString());
                     ratesss.setRate(ratesss.getRate()+ratingRatingBar.getRating());
                     ratesss.setMan(ratesss.getMan()+1);
+                    ratesss.setId(ids);
                     display.setText(ratesss.toString());
 
                     databaseRatee.child("rate").setValue(ratesss);
@@ -321,6 +337,51 @@ public class HomeOwnerMainPageActivity extends AppCompatActivity {
         Log.d("updateService", newDate.size()+newDate.toString());
 
         listViewServices.setAdapter(servicesAdapter);
+
+    }
+
+    public void Rate(final double getrates){
+        databaseProviderService = FirebaseDatabase.getInstance().getReference("rate");
+        databaseProviderService.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<ProSer> newDate = new ArrayList<>();
+                List<String> newrate = new ArrayList<>();
+                for (DataSnapshot snapshot2 : dataSnapshot.getChildren()) {
+                    for (int i = 0; i < services.size(); i++) {
+                        String service = services.get(i).getProID();
+                        Log.d("updateServiceRateservice", service);
+                        Log.d("updateServiceRatesnapshot2", snapshot2.child("rate").child("id").getValue(String.class));
+
+                        if (snapshot2.child("rate").child("id").getValue(String.class) .equals(service)){
+                            double rate = snapshot2.child("rate").child("rate").getValue(double.class);
+                            int man = snapshot2.child("rate").child("man").getValue(int.class);
+                            double c = rate/man;
+                            if(getrates-0.5<c&&c<getrates+0.5){
+                                newDate.add(services.get(i));
+                                newrate.add( String.valueOf(c));
+
+                            }
+
+
+                    }
+                }
+                }
+                OwnViList servicesAdapter = new OwnViList(HomeOwnerMainPageActivity.this,newrate, newDate);
+                Log.d("updateServiceRate", newDate.size()+newDate.toString());
+
+                listViewServices.setAdapter(servicesAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+
+            }
+        });
+
 
     }
 
