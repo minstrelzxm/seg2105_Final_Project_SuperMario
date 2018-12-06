@@ -11,18 +11,16 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
+public class create_provider_accountTest {
 
-
-
-public class CreateAccountActivityTest {
-
-    //The Unit Test for Demo 3
-
+    //The Unit Test for Demo 4
+    //three Unit Test Cases
     @Rule
-    public ActivityTestRule<CreateAccountActivity> mActivityTestRule= new ActivityTestRule<CreateAccountActivity>(CreateAccountActivity.class);
-    private CreateAccountActivity mActivity=null;
+    public ActivityTestRule<create_owner_account> mActivityTestRule= new ActivityTestRule<create_owner_account>(create_owner_account.class);
+    private create_owner_account mActivity=null;
     private TextView text;
 
+    //Test in HomeOwnerMainPageActivity
     @Before
     public void setUp() throws Exception{
         mActivity=mActivityTestRule.getActivity();
@@ -31,30 +29,33 @@ public class CreateAccountActivityTest {
 
     @Test
     @UiThreadTest
-    public void checkName() throws Exception{
+    //Test the username
+    public void checkAccountName() throws Exception{
         assertNotNull(mActivity.findViewById(R.id.textView3));
         text = mActivity.findViewById(R.id.createAccAccName);
-        text.setText("mingweideng@gmail.com");
+        text.setText("jjj@gmail.com");
         String name=text.getText().toString();
         assertNotEquals("username",name);
     }
 
     @Test
     @UiThreadTest
+    //Test the password
     public void checkPassword() throws Exception{
         assertNotNull(mActivity.findViewById(R.id.textView4));
         text = mActivity.findViewById(R.id.createAccAccPassword);
-        text.setText("123456");
+        text.setText("12345");
         String name=text.getText().toString();
         assertNotEquals("password",name);
     }
 
     @Test
     @UiThreadTest
-    public void checkVerification() throws Exception{
+    //Test the re-password
+    public void checkRePassword() throws Exception{
         assertNotNull(mActivity.findViewById(R.id.textView5));
         text = mActivity.findViewById(R.id.createAccReAccPassword);
-        text.setText("123456");
+        text.setText("12345");
         String name=text.getText().toString();
         assertNotEquals("password",name);
     }

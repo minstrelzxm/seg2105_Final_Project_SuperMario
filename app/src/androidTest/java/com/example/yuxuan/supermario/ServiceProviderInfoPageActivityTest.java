@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class ServiceProviderInfoPageActivityTest {
 
-    //The Unit Test for Demo 3
+    //The Unit Test for Demo 4
     //Three Unit Test Cases
     @Rule
     public ActivityTestRule<ServiceProviderInfoPageActivity> mActivityTestRule= new ActivityTestRule<ServiceProviderInfoPageActivity>(ServiceProviderInfoPageActivity.class);
@@ -60,4 +60,23 @@ public class ServiceProviderInfoPageActivityTest {
         assertNotEquals("company",name);
     }
 
+    @Test
+    @UiThreadTest
+    public void checkGeneralInfo() throws Exception{
+        assertNotNull(mActivity.findViewById(R.id.GeneralInfo));
+        text = mActivity.findViewById(R.id.EditGeneralInfo);
+        text.setText("Info");
+        String name=text.getText().toString();
+        assertNotEquals("software",name);
+    }
+
+    @Test
+    @UiThreadTest
+    public void checkPhoneNum() throws Exception{
+        assertNotNull(mActivity.findViewById(R.id.PhoneNum));
+        text = mActivity.findViewById(R.id.EditPhoneNum);
+        text.setText("6132767325");
+        String name=text.getText().toString();
+        assertNotEquals("phone",name);
+    }
 }
